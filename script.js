@@ -1,19 +1,12 @@
-/* ============================================
-   PORTFOLIO - Interactive JavaScript
-   ============================================ */
-
 document.addEventListener('DOMContentLoaded', () => {
-    // ===== Particle Background =====
-    initParticles();
-    
     // ===== Cursor Glow =====
     initCursorGlow();
     
     // ===== Navigation =====
     initNavigation();
     
-    // ===== Typewriter Effect =====
-    initTypewriter();
+    // ===== Interactive Developer Terminal Deck =====
+    initTerminalDeck();
     
     // ===== Stats Counter =====
     initStatsCounter();
@@ -37,12 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 });
 
-// ===== PARTICLE BACKGROUND =====
+// ===== AMBIENT CANVAS BACKGROUND =====
 function initParticles() {
     const canvas = document.getElementById('particleCanvas');
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
     let particles = [];
-    let animationId;
     
     function resize() {
         canvas.width = window.innerWidth;
@@ -52,7 +45,7 @@ function initParticles() {
     resize();
     window.addEventListener('resize', resize);
     
-    class Particle {
+    class AmbientNode {
         constructor() {
             this.reset();
         }
@@ -60,49 +53,44 @@ function initParticles() {
         reset() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 2 + 0.5;
+            this.size = Math.random() * 1.8 + 0.8;
             this.speedX = (Math.random() - 0.5) * 0.3;
             this.speedY = (Math.random() - 0.5) * 0.3;
-            this.opacity = Math.random() * 0.4 + 0.1;
-            this.pulseSpeed = Math.random() * 0.02 + 0.005;
-            this.pulseOffset = Math.random() * Math.PI * 2;
+            this.opacity = Math.random() * 0.25 + 0.1;
         }
         
-        update(time) {
+        update() {
             this.x += this.speedX;
             this.y += this.speedY;
             
             if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
             if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-            
-            this.currentOpacity = this.opacity + Math.sin(time * this.pulseSpeed + this.pulseOffset) * 0.1;
         }
         
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(108, 92, 231, ${this.currentOpacity})`;
+            ctx.fillStyle = `rgba(88, 166, 255, ${this.opacity})`;
             ctx.fill();
         }
     }
     
-    // Create particles
-    const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 15000), 80);
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
+    const count = Math.min(Math.floor((canvas.width * canvas.height) / 18000), 60);
+    for (let i = 0; i < count; i++) {
+        particles.push(new AmbientNode());
     }
     
-    function drawConnections() {
+    function drawGridConnections() {
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
                 
-                if (dist < 150) {
-                    const opacity = (1 - dist / 150) * 0.08;
+                if (dist < 120) {
+                    const opacity = (1 - dist / 120) * 0.07;
                     ctx.beginPath();
-                    ctx.strokeStyle = `rgba(108, 92, 231, ${opacity})`;
+                    ctx.strokeStyle = `rgba(88, 166, 255, ${opacity})`;
                     ctx.lineWidth = 0.5;
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
@@ -112,19 +100,65 @@ function initParticles() {
         }
     }
     
-    function animate(time) {
+    function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         particles.forEach(p => {
-            p.update(time);
+            p.update();
             p.draw();
         });
         
-        drawConnections();
-        animationId = requestAnimationFrame(animate);
+        drawGridConnections();
+        requestAnimationFrame(animate);
     }
     
-    animate(0);
+    animate();
+}
+
+// ===== INTERACTIVE TERMINAL DECK =====
+function initTerminalDeck() {
+    const output = document.getElementById('terminalOutput');
+    const btns = document.querySelectorAll('.term-btn');
+    if (!output) return;
+
+    const commands = {
+        whoami: `<div class="term-line prompt-line"><span class="term-user">khushal@analytics</span>:<span class="term-path">~</span>$ whoami</div>
+                 <div class="term-line term-response"><p><strong>Sai Khushal</strong> — Data Analytics &amp; Machine Learning Specialist</p><p class="term-sub">Location: Bangalore, India | Edu: B.Tech CSE (Data Analytics)</p></div>`,
+        
+        skills: `<div class="term-line prompt-line"><span class="term-user">khushal@analytics</span>:<span class="term-path">~</span>$ stack --all</div>
+                 <div class="term-line term-response">
+                    <p><span class="term-accent">Languages:</span> Python, R, SQL, Java, C/C++</p>
+                    <p><span class="term-accent">ML &amp; Analytics:</span> TensorFlow, Scikit-learn, Pandas, NumPy, Matplotlib, Seaborn</p>
+                    <p><span class="term-accent">Tools &amp; OS:</span> Git, Linux, Jupyter, VS Code</p>
+                 </div>`,
+
+        projects: `<div class="term-line prompt-line"><span class="term-user">khushal@analytics</span>:<span class="term-path">~</span>$ ls -la ./projects</div>
+                   <div class="term-line term-response">
+                      <p>• <strong>Flight Price Predictor</strong> [Python, Scikit-learn, ML]</p>
+                      <p>• <strong>RAT (Remote Audit Tool)</strong> [PowerShell, Raspberry Pi]</p>
+                      <p>• <strong>Checkstyle Open Source</strong> [Java, GSoC 2026, Git]</p>
+                      <p>• <strong>Cloud & Data Analytics</strong> [GCP, Pandas, Seaborn]</p>
+                   </div>`,
+
+        contact: `<div class="term-line prompt-line"><span class="term-user">khushal@analytics</span>:<span class="term-path">~</span>$ cat ./contact.info</div>
+                  <div class="term-line term-response">
+                     <p>Email: <a href="mailto:khushalpsai@gmail.com" style="color:#58a6ff">khushalpsai@gmail.com</a></p>
+                     <p>GitHub: <a href="https://github.com/Khushalpsai" target="_blank" style="color:#58a6ff">github.com/Khushalpsai</a></p>
+                     <p>LinkedIn: <a href="https://www.linkedin.com/in/sai-khushal-477365318/" target="_blank" style="color:#58a6ff">linkedin.com/in/sai-khushal</a></p>
+                  </div>`
+    };
+
+    btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const cmd = btn.getAttribute('data-cmd');
+            if (cmd === 'clear') {
+                output.innerHTML = '';
+            } else if (commands[cmd]) {
+                output.innerHTML += commands[cmd];
+                output.scrollTop = output.scrollHeight;
+            }
+        });
+    });
 }
 
 // ===== CURSOR GLOW =====
@@ -210,11 +244,11 @@ function initNavigation() {
 function initTypewriter() {
     const element = document.getElementById('typewriter');
     const roles = [
-        'Full Stack Developer',
-        'UI/UX Enthusiast',
-        'Problem Solver',
-        'Open Source Contributor',
-        'Tech Explorer'
+        'Data Analytics Specialist',
+        'Machine Learning Engineer',
+        'AI Enthusiast',
+        'Data Scientist',
+        'Python Developer'
     ];
     
     let roleIndex = 0;
@@ -465,3 +499,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+
