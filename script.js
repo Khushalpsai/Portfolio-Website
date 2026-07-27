@@ -432,30 +432,46 @@ function initContactForm() {
     const submitBtn = document.getElementById('formSubmit');
     const statusEl = document.getElementById('formStatus');
     
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         // Add loading state
         submitBtn.classList.add('loading');
         submitBtn.disabled = true;
         
-        // Simulate form submission
-        setTimeout(() => {
+        try {
+            const formData = new FormData(form);
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
             submitBtn.classList.remove('loading');
             submitBtn.disabled = false;
             
-            // Show success message
-            statusEl.className = 'form-status success';
-            statusEl.textContent = '🎉 Message sent successfully! I\'ll get back to you soon.';
-            
-            // Reset form
-            form.reset();
-            
-            // Hide status after 5 seconds
-            setTimeout(() => {
-                statusEl.className = 'form-status';
-            }, 5000);
-        }, 2000);
+            if (result.success) {
+                // Show success message
+                statusEl.className = 'form-status success';
+                statusEl.textContent = '🎉 Message sent successfully! I\'ll get back to you soon.';
+                form.reset();
+            } else {
+                // Show error message
+                statusEl.className = 'form-status error';
+                statusEl.textContent = '❌ Something went wrong. Please try again or email me directly.';
+            }
+        } catch (error) {
+            submitBtn.classList.remove('loading');
+            submitBtn.disabled = false;
+            statusEl.className = 'form-status error';
+            statusEl.textContent = '❌ Network error. Please try again or email me directly.';
+        }
+        
+        // Hide status after 5 seconds
+        setTimeout(() => {
+            statusEl.className = 'form-status';
+        }, 5000);
     });
     
     // Input animations
