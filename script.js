@@ -134,6 +134,7 @@ function initTerminalDeck() {
 
         projects: `<div class="term-line prompt-line"><span class="term-user">khushal@analytics</span>:<span class="term-path">~</span>$ ls -la ./projects</div>
                    <div class="term-line term-response">
+                      <p>• <strong>Gesture Controlled Media Player</strong> [Python, MediaPipe, OpenCV]</p>
                       <p>• <strong>Flight Price Predictor</strong> [Python, Scikit-learn, ML]</p>
                       <p>• <strong>RAT (Remote Audit Tool)</strong> [PowerShell, Raspberry Pi]</p>
                       <p>• <strong>Checkstyle Open Source</strong> [Java, GSoC 2026, Git]</p>

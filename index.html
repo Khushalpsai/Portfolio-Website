@@ -58,7 +58,7 @@
             </div>
             <div class="hero-stats">
                 <div class="stat-item">
-                    <span class="stat-number">10+</span>
+                    <span class="stat-number">11+</span>
                     <span class="stat-label">Analytics &amp; ML Projects</span>
                 </div>
                 <div class="stat-divider"></div>
@@ -326,26 +326,36 @@
                 <button class="filter-btn" data-filter="viz">Visualization</button>
             </div>
             <div class="projects-grid">
-                <!-- Project 1 -->
+                <!-- Project 1: Gesture Controlled Media Player -->
                 <article class="project-card" data-category="ml">
                     <div class="project-image">
-                        <div class="project-image-placeholder">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                            <span>Project Screenshot</span>
+                        <div class="project-image-placeholder" style="--placeholder-hue: 320">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                            <span>Gesture &amp; Computer Vision</span>
                         </div>
                         <div class="project-overlay">
-                            <a href="#" class="project-link" aria-label="View live demo">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                Live Demo
-                            </a>
-                            <a href="#" class="project-link" aria-label="View source code">
+                            <a href="https://github.com/Khushalpsai/gesture-controlled-media-player" target="_blank" class="project-link">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                                 Source Code
                             </a>
                         </div>
                     </div>
                     <div class="project-info">
-                <!-- Project 1: Flight Price Predictor -->
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">MediaPipe</span>
+                            <span class="project-tag">OpenCV</span>
+                            <span class="project-tag">Computer Vision</span>
+                        </div>
+                        <h3 class="project-title">Gesture Controlled Media Player</h3>
+                        <p class="project-description">
+                            Control your media player using hand gestures — no keyboard, no mouse, just your hand in front of a webcam.
+                            Built with Python, MediaPipe, and OpenCV. Uses real-time hand landmark detection with debounce &amp; stability filtering to trigger system-wide media keys via pyautogui.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Project 2: Flight Price Predictor -->
                 <article class="project-card" data-category="ml">
                     <div class="project-image">
                         <div class="project-image-placeholder" style="--placeholder-hue: 200">
