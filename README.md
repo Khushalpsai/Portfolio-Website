@@ -2,7 +2,7 @@
 
 A modern, professional portfolio website built with HTML, CSS, and JavaScript.
 
-## ✨ Features
+## Features
 
 - **Hero Section** — Animated typewriter, stats counter, particle background
 - **About Section** — Bio, info cards, resume download
@@ -12,7 +12,7 @@ A modern, professional portfolio website built with HTML, CSS, and JavaScript.
 - **Responsive Design** — Works on all devices
 - **Dark Theme** — Premium dark aesthetic with purple accents
 
-## 🚀 Getting Started
+## Getting Started
 
 Just open `index.html` in your browser, or run a local server:
 
@@ -20,7 +20,7 @@ Just open `index.html` in your browser, or run a local server:
 npx serve .
 ```
 
-## 📝 Customization
+## Customization
 
 Edit `index.html` and replace placeholder text:
 - `"Your Name"` → your name
@@ -30,7 +30,7 @@ Edit `index.html` and replace placeholder text:
 - Adjust skill percentages (`--progress` values)
 - Add your social media URLs
 
-## 📁 Structure
+## Structure
 
 ```
 ├── index.html   — Page structure
