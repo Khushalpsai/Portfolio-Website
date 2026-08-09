@@ -505,6 +505,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 
 
+
 // ===== 3D PROJECT CARDS =====
 function initProjectCards() {
     const cards = document.querySelectorAll('.project-card');
@@ -522,10 +523,10 @@ function initProjectCards() {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             
-            const rotateX = ((y - centerY) / centerY) * -6; // max 6 deg
-            const rotateY = ((x - centerX) / centerX) * 6; // max 6 deg
+            const rotateX = ((y - centerY) / centerY) * -4; // max 4 deg for subtle effect
+            const rotateY = ((x - centerX) / centerX) * 4;
             
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
         });
         
         card.addEventListener('mouseleave', () => {
@@ -534,8 +535,8 @@ function initProjectCards() {
     });
 }
 
-// ===== NEON GRID CANVAS =====
-function initNeonGrid() {
+// ===== AMBIENT STARDUST CANVAS =====
+function initNeonGrid() { // Keeping name initNeonGrid so we don't have to change the call in DOMContentLoaded
     const canvas = document.getElementById('neon-grid');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -551,62 +552,44 @@ function initNeonGrid() {
     window.addEventListener('resize', resize);
     resize();
     
-    // Scattered perspective lines (light streaks)
-    const lines = [];
-    const numLines = 80; // reduced count for performance and cleaner look
+    // Slow ambient stars
+    const stars = [];
+    const numStars = 200;
     
-    for(let i=0; i<numLines; i++) {
-        lines.push({
-            x: (Math.random() - 0.5) * 3000,
-            y: (Math.random() - 0.5) * 3000,
-            z: Math.random() * 2000,
-            color: Math.random() > 0.5 ? 'rgba(0, 240, 255' : 'rgba(217, 0, 255' // Cyan or Purple
+    for(let i=0; i<numStars; i++) {
+        stars.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            size: Math.random() * 1.5 + 0.5,
+            speed: (Math.random() * 0.2) + 0.05,
+            opacity: Math.random(),
+            fadeDir: Math.random() > 0.5 ? 1 : -1
         });
     }
     
-    const fov = 400;
-    let speed = 2.5; // Calmer speed
-    
     function draw() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 1)'; // Perfectly black background
+        ctx.fillStyle = 'rgba(0, 0, 0, 1)';
         ctx.fillRect(0, 0, width, height);
         
-        const centerX = width / 2;
-        const centerY = height / 2;
-        
-        ctx.lineWidth = 1.5;
-        
-        for (let i = 0; i < numLines; i++) {
-            let line = lines[i];
+        for (let i = 0; i < numStars; i++) {
+            let star = stars[i];
             
-            line.z -= speed;
+            star.y -= star.speed;
             
-            if (line.z <= 0) {
-                line.z = 2000;
-                line.x = (Math.random() - 0.5) * 3000;
-                line.y = (Math.random() - 0.5) * 3000;
+            // Twinkle effect
+            star.opacity += 0.01 * star.fadeDir;
+            if (star.opacity >= 1) star.fadeDir = -1;
+            if (star.opacity <= 0.1) star.fadeDir = 1;
+            
+            if (star.y < 0) {
+                star.y = height;
+                star.x = Math.random() * width;
             }
             
-            let x = centerX + (line.x * fov) / line.z;
-            let y = centerY + (line.y * fov) / line.z;
-            
-            // Draw a streak from the past position to current
-            let tailZ = line.z + 150; 
-            
-            let tx = centerX + (line.x * fov) / tailZ;
-            let ty = centerY + (line.y * fov) / tailZ;
-            
-            // Fade based on depth
-            let alpha = 1 - (line.z / 2000);
-            if (alpha < 0) alpha = 0;
-            
             ctx.beginPath();
-            ctx.strokeStyle = `${line.color}, ${alpha})`;
-            ctx.shadowBlur = 8;
-            ctx.shadowColor = line.color + ', 1)';
-            ctx.moveTo(tx, ty);
-            ctx.lineTo(x, y);
-            ctx.stroke();
+            ctx.fillStyle = `rgba(180, 200, 220, ${star.opacity * 0.8})`;
+            ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+            ctx.fill();
         }
         
         requestAnimationFrame(draw);
