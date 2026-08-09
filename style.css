@@ -2,29 +2,29 @@
    DESIGN TOKENS & RESET
    ============================================ */
 :root {
-    /* Colors - GitHub Minimalist Dark Theme */
-    --bg-primary: #0d1117;
-    --bg-secondary: #161b22;
-    --bg-tertiary: #21262d;
-    --bg-card: #161b22;
-    --bg-card-hover: #1c2128;
+    /* Colors - Synthwave Neon Dark Theme */
+    --bg-primary: #000000;
+    --bg-secondary: transparent;
+    --bg-tertiary: transparent;
+    --bg-card: rgba(10, 10, 15, 0.4);
+    --bg-card-hover: rgba(20, 20, 25, 0.6);
     
-    --accent-primary: #58a6ff; /* GitHub Blue */
-    --accent-secondary: #3fb950; /* Green */
-    --accent-tertiary: #d29922; /* Amber */
-    --accent-glow: transparent;
+    --accent-primary: #00f0ff; /* Neon Cyan */
+    --accent-secondary: #d900ff; /* Neon Pink/Purple */
+    --accent-tertiary: #ff0055; /* Neon Red */
+    --accent-glow: 0 0 15px rgba(0, 240, 255, 0.6);
     
     --text-primary: #f0f6fc;
-    --text-secondary: #8b949e;
+    --text-secondary: #a8b2bd;
     --text-tertiary: #6e7681;
     --text-muted: #484f58;
     
-    --border-color: #30363d;
-    --border-hover: #8b949e;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-hover: rgba(0, 240, 255, 0.5);
     
-    --gradient-primary: none;
-    --gradient-accent: none;
-    --gradient-card: none;
+    --gradient-primary: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    --gradient-accent: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+    --gradient-card: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
     
     /* Spacing */
     --section-padding: 100px;
@@ -742,7 +742,20 @@ body:hover .cursor-dot {
 }
 
 /* ============================================
-   ABOUT SECTION
+   NEON GRID BACKGROUND CANVAS
+   ============================================ */
+#neon-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* ============================================
+   LAYOUT & CONTAINERS
    ============================================ */
 .about-grid {
     display: grid;
@@ -974,21 +987,49 @@ body:hover .cursor-dot {
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    transition: all var(--transition-smooth);
+    transition: transform 0.1s ease-out, border-color var(--transition-base), box-shadow var(--transition-base);
     opacity: 1;
     transform: scale(1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+/* The dynamic mouse-glow spotlight */
+.project-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(0, 240, 255, 0.1),
+        transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.project-card:hover::before {
+    opacity: 1;
 }
 
 .project-card:hover {
-    border-color: rgba(108, 92, 231, 0.3);
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-lg), 0 0 20px rgba(0, 240, 255, 0.2);
+    /* translateY is handled by JS for tilt, but we can set a fallback here if JS is off */
 }
 
 .project-image {
     position: relative;
     aspect-ratio: 16/10;
     overflow: hidden;
+    z-index: 2;
 }
 
 .project-image-placeholder {
