@@ -1,604 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sai Khushal — Data Analytics & Machine Learning specialist from Bangalore. Explore my projects, skills, and experience in data science and AI.">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <title>Sai Khushal | Data Analytics & Machine Learning</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sai Khushal — Data Analytics & Machine Learning specialist from Bangalore. Explore my projects, skills, and experience in data science and AI.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>Sai Khushal | Data Analytics & Machine Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas id="neon-grid"></canvas>
+  <canvas id="neon-grid"></canvas>
 
-    <!-- Cursor glow effect -->
-    <div class="cursor-glow" id="cursorGlow"></div>
-    <div class="cursor-dot" id="cursorDot"></div>
+  <!-- Custom cursor -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <div class="cursor-dot"  id="cursorDot"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo">
-                <span class="logo-bracket">&lt;</span>SK<span class="logo-bracket">/&gt;</span>
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar" id="navbar" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" aria-label="Home">
+        <span class="logo-bracket">&lt;</span>SK<span class="logo-bracket">/&gt;</span>
+      </a>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#hero"     class="nav-link active" data-section="hero">Home</a></li>
+        <li><a href="#about"    class="nav-link"        data-section="about">About</a></li>
+        <li><a href="#skills"   class="nav-link"        data-section="skills">Skills</a></li>
+        <li><a href="#projects" class="nav-link"        data-section="projects">Projects</a></li>
+        <li><a href="#contact"  class="nav-link"        data-section="contact">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero" id="hero" aria-label="Introduction">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="hero-greeting">Heyaa im</span>
+        <span class="hero-name" id="heroName">Khushal</span>
+      </h1>
+
+      <p class="hero-description">
+        I learn best by turning ideas into something real. Instead of just learning concepts theoretically, I like understanding them through practical application — experimenting, building, breaking things, fixing them, and seeing how everything works together. I genuinely enjoy creating things with my own hands, whether it is a small experiment or a challenging project. For me, the best part of learning is the process of taking an idea from my head and turning it into something that actually works.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">
+          <span>Explore Projects</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <span>Get in Touch</span>
+        </a>
+      </div>
+
+      <div class="hero-stats" aria-label="Key statistics">
+        <div class="stat-item">
+          <span class="stat-number">11+</span>
+          <span class="stat-label">Analytics &amp; ML Projects</span>
+        </div>
+        <div class="stat-divider" role="separator"></div>
+        <div class="stat-item">
+          <span class="stat-number">9+</span>
+          <span class="stat-label">Core Tech Stack Skills</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile photo -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-photo-card">
+        <div class="hero-photo-glow"></div>
+        <img src="profile.jpg" alt="Sai Khushal" class="hero-photo-img" loading="eager" draggable="false">
+      </div>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section class="section about" id="about" aria-label="About me">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag-badge">About Me</span>
+        <div class="section-divider"></div>
+        <h2 class="section-title">Software Engineer &amp; Data Specialist</h2>
+        <p class="section-subtitle">Practical engineering, Machine Learning, and Data Analytics</p>
+      </div>
+
+      <div class="about-grid">
+        <!-- Avatar card -->
+        <aside class="about-card-avatar reveal reveal-delay-1" aria-label="Profile card">
+          <div class="avatar-ring avatar-ring--large">
+            <img src="profile.jpg" alt="Sai Khushal" class="avatar-img" loading="lazy">
+          </div>
+          <div class="avatar-meta">
+            <h3>Sai Khushal</h3>
+            <p>VIT - AP University</p>
+          </div>
+        </aside>
+
+        <!-- Bio content -->
+        <div class="about-content reveal reveal-delay-2">
+          <h3 class="about-heading">B.Tech CSE with specialization in Data Analytics</h3>
+          <p class="about-text">
+            I'm a Computer Science undergraduate at VIT - AP University specializing in Data Analytics.
+            Proficient in Java, Python, backend technologies, and machine learning, I focus on practical applications and robust software development.
+          </p>
+          <p class="about-text">
+            From building machine learning models to open-source contributions (Checkstyle / GSoC 2026 participant) and low-level forensic tooling,
+            I enjoy solving complex software &amp; data challenges.
+          </p>
+
+          <div class="about-info-grid">
+            <div class="about-info-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div>
+                <span class="info-label">Location</span>
+                <span class="info-value">Bangalore, India</span>
+              </div>
+            </div>
+            <div class="about-info-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c6 5 10 0 16-2"/></svg>
+              <div>
+                <span class="info-label">Education</span>
+                <span class="info-value">VIT - AP University</span>
+              </div>
+            </div>
+          </div>
+
+          <a href="resume.pdf" class="btn btn-primary" download="Sai_Khushal_Resume.pdf">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download Resume</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SKILLS ==================== -->
+  <section class="section skills" id="skills" aria-label="Skills and technologies">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag-badge">Technical Stack</span>
+        <div class="section-divider"></div>
+        <h2 class="section-title">Skills &amp; Toolkit</h2>
+        <p class="section-subtitle">Core languages, machine learning frameworks, and data platforms</p>
+      </div>
+    </div>
+
+    <div class="skills-marquee-container" aria-label="Technology skills marquee">
+      <!-- Row 1 — scrolls right -->
+      <div class="skills-marquee-row">
+        <div class="skills-marquee-track marquee-right" aria-hidden="true">
+          <!-- set 1 -->
+          <span class="skill-pill"><svg viewBox="0 0 128 128" width="20" height="20"><path fill="#EA2D2E" d="M69.802 61.271c6.025 6.935-1.58 13.17-1.58 13.17s15.289-7.891 8.269-17.777c-6.559-9.215-11.587-13.793 15.635-29.58 0 .001-42.731 10.67-22.324 34.187z"/><path fill="#0074BD" d="M47.617 98.12s-4.767 2.774 3.397 3.71c9.892 1.13 14.947.968 25.845-1.092 0 0 2.871 1.795 6.873 3.351-24.439 10.47-55.308-.607-36.115-5.969z"/></svg><span>Java</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 128 128" width="20" height="20"><path fill="#659AD2" d="M115.4 30.7L67.1 2.9c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.3 1 3.4l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c.7-.4 1.4-1 1.9-1.7.8-1.1 1-2.3 1-3.4V36.1c0-1.9-1.2-4.4-2.8-5.4zM61.9 100.7c-21.8 0-39.5-17.7-39.5-39.5S40.1 21.7 61.9 21.7c14.7 0 27.5 8.1 34.3 20l-13 7.5C78.8 41.3 71 36.2 61.9 36.2c-13.8 0-25 11.2-25 25s11.2 25 25 25c9.1 0 16.9-5.1 21.3-12.6l12.9 7.6c-6.7 12-19.5 19.5-34.2 19.5z"/></svg><span>C/C++</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 128 128" width="20" height="20"><linearGradient id="a" gradientUnits="userSpaceOnUse" x1="70.252" y1="1237.476" x2="170.659" y2="1151.089" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#5A9FD4"/><stop offset="1" stop-color="#306998"/></linearGradient><linearGradient id="b" gradientUnits="userSpaceOnUse" x1="209.474" y1="1098.811" x2="173.318" y2="1149.537" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#FFD43B"/><stop offset="1" stop-color="#FFE873"/></linearGradient><path fill="url(#a)" d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008z"/><path fill="url(#b)" d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268z"/></svg><span>Python</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 128 128" width="20" height="20"><path fill="#276DC3" d="M64.026 95.064c-21.473 0-45.208-8.181-45.208-31.212 0-23.033 23.735-31.215 45.208-31.215 21.474 0 45.209 8.182 45.209 31.215 0 23.031-23.735 31.212-45.209 31.212z"/></svg><span>R</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" fill="#00618A"/><text x="6" y="16" fill="white" font-size="10" font-weight="bold" font-family="sans-serif">SQL</text></svg><span>SQL</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="#47A248" d="M14.28 10.74c-.5-1.52-1.3-3.23-2.1-4.88-.2-.39-.55-.66-.94-.66-.4 0-.74.27-.94.66-.8 1.65-1.6 3.36-2.1 4.88-1.52 4.49-1.94 7.6-1.94 9.17 0 2.5 1.63 4.25 4.3 4.25h1.36c2.67 0 4.3-1.75 4.3-4.25 0-1.57-.42-4.68-1.94-9.17zm-2.14 9.77c-.4 0-.74-.3-.74-.7s.34-.7.74-.7.74.3.74.7-.33.7-.74.7z"/><path fill="#47A248" d="M12 0C8.17 0 6.64 3.75 6.64 3.75l.6 1.83s1.28-2.5 4.76-2.5c3.48 0 4.76 2.5 4.76 2.5l.6-1.83S15.83 0 12 0z"/></svg><span>MongoDB</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" fill="#DC382D"/><text x="4.5" y="16" fill="white" font-size="8.5" font-weight="bold" font-family="sans-serif">Redis</text></svg><span>Redis</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg><span>GCP</span></span>
+          <!-- set 2 (duplicate for seamless loop) -->
+          <span class="skill-pill"><svg viewBox="0 0 128 128" width="20" height="20"><path fill="#EA2D2E" d="M69.802 61.271c6.025 6.935-1.58 13.17-1.58 13.17s15.289-7.891 8.269-17.777c-6.559-9.215-11.587-13.793 15.635-29.58 0 .001-42.731 10.67-22.324 34.187z"/><path fill="#0074BD" d="M47.617 98.12s-4.767 2.774 3.397 3.71c9.892 1.13 14.947.968 25.845-1.092 0 0 2.871 1.795 6.873 3.351-24.439 10.47-55.308-.607-36.115-5.969z"/></svg><span>Java</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 128 128" width="20" height="20"><path fill="#659AD2" d="M115.4 30.7L67.1 2.9c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.3 1 3.4l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c.7-.4 1.4-1 1.9-1.7.8-1.1 1-2.3 1-3.4V36.1c0-1.9-1.2-4.4-2.8-5.4zM61.9 100.7c-21.8 0-39.5-17.7-39.5-39.5S40.1 21.7 61.9 21.7c14.7 0 27.5 8.1 34.3 20l-13 7.5C78.8 41.3 71 36.2 61.9 36.2c-13.8 0-25 11.2-25 25s11.2 25 25 25c9.1 0 16.9-5.1 21.3-12.6l12.9 7.6c-6.7 12-19.5 19.5-34.2 19.5z"/></svg><span>C/C++</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 128 128" width="20" height="20"><linearGradient id="c" gradientUnits="userSpaceOnUse" x1="70.252" y1="1237.476" x2="170.659" y2="1151.089" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#5A9FD4"/><stop offset="1" stop-color="#306998"/></linearGradient><linearGradient id="d" gradientUnits="userSpaceOnUse" x1="209.474" y1="1098.811" x2="173.318" y2="1149.537" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#FFD43B"/><stop offset="1" stop-color="#FFE873"/></linearGradient><path fill="url(#c)" d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008z"/><path fill="url(#d)" d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268z"/></svg><span>Python</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 128 128" width="20" height="20"><path fill="#276DC3" d="M64.026 95.064c-21.473 0-45.208-8.181-45.208-31.212 0-23.033 23.735-31.215 45.208-31.215 21.474 0 45.209 8.182 45.209 31.215 0 23.031-23.735 31.212-45.209 31.212z"/></svg><span>R</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" fill="#00618A"/><text x="6" y="16" fill="white" font-size="10" font-weight="bold" font-family="sans-serif">SQL</text></svg><span>SQL</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="#47A248" d="M14.28 10.74c-.5-1.52-1.3-3.23-2.1-4.88-.2-.39-.55-.66-.94-.66-.4 0-.74.27-.94.66-.8 1.65-1.6 3.36-2.1 4.88-1.52 4.49-1.94 7.6-1.94 9.17 0 2.5 1.63 4.25 4.3 4.25h1.36c2.67 0 4.3-1.75 4.3-4.25 0-1.57-.42-4.68-1.94-9.17zm-2.14 9.77c-.4 0-.74-.3-.74-.7s.34-.7.74-.7.74.3.74.7-.33.7-.74.7z"/><path fill="#47A248" d="M12 0C8.17 0 6.64 3.75 6.64 3.75l.6 1.83s1.28-2.5 4.76-2.5c3.48 0 4.76 2.5 4.76 2.5l.6-1.83S15.83 0 12 0z"/></svg><span>MongoDB</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" fill="#DC382D"/><text x="4.5" y="16" fill="white" font-size="8.5" font-weight="bold" font-family="sans-serif">Redis</text></svg><span>Redis</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg><span>GCP</span></span>
+        </div>
+      </div>
+
+      <!-- Row 2 — scrolls left -->
+      <div class="skills-marquee-row">
+        <div class="skills-marquee-track marquee-left" aria-hidden="true">
+          <!-- set 1 -->
+          <span class="skill-pill"><svg viewBox="0 0 128 128" width="20" height="20"><path fill="#FF6F00" d="M49.6 96.1V80.8h-4.8v19.6h14v-4.3z"/><path fill="#FF6F00" d="M121.7 28.9h-24c-.6-6.8-3.7-12.4-10.5-16.2-5.6-3.2-12.4-4.6-19.7-4.6-8.4 0-16 2-21.5 6.3-5.3 4.2-8.1 9.8-8.1 16.4 0 5 1.8 9.2 5.3 12.4 3.4 3.2 8.6 5.5 15 7l7.8 1.8c4.5 1 7.7 2.2 9.6 3.6 1.8 1.3 2.6 3.2 2.6 5.6 0 3.1-1.5 5.5-4.5 7.2-3.2 1.8-7.5 2.7-13 2.7-5.3 0-9.8-1-13.4-3-3.7-2-5.9-4.6-6.7-7.8H35c1 7.4 4.6 13 10.8 16.6 6 3.5 13.5 5.2 22.1 5.2 8.9 0 16.3-2.1 21.8-6.3 5.6-4.3 8.4-10 8.4-16.9 0-5.4-1.8-9.7-5.5-13.1-3.6-3.3-9-5.7-16-7.3l-7.3-1.7c-4.5-1-7.5-2.2-9.1-3.5-1.5-1.2-2.3-2.9-2.3-5 0-2.9 1.4-5.2 4.3-6.8 2.9-1.7 6.8-2.5 11.8-2.5 4.7 0 8.5 1 11.4 2.8 2.7 1.7 4.4 4 5 7h21.3V28.9z"/></svg><span>TensorFlow</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 128 128" width="20" height="20"><path fill="#F89939" d="M63.634 0c-2.81 4.962-4.252 8.857-5.828 13.264-4.81 13.455-3.26 27.636 3.696 39.2l.243.39.798 1.277-.19-.249c-5.58-7.293-14.05-12.48-23.705-13.666C28.96 39.083 19.288 41.58 11.476 47.28c4.213 2.218 7.636 4.18 10.86 6.42 9.92 6.887 16.382 16.778 18.213 28.043.66 4.06.684 8.133.322 12.287 2.422-4.39 3.526-6.577 5.42-10.742 6.8-22.107 4.238-33.696-.305-1.38-.66-2.747-1.072-4.136 1.755 1.838 3.386 3.654 4.75 5.665 8.92 13.154 11.91 27.536 8.207 42.823l-.266 1.04.086-.133c7.13-11.244 9.996-23.456 7.826-36.566-1.49-8.997-5.495-17.104-11.273-24.4l-1.435-1.75c1.096.293 2.16.594 3.19.946 14.37 4.9 25.16 14.23 31.987 27.998 1.203 2.423 2.18 4.957 3.21 7.588-.258-4.244-.623-8.293-1.245-12.307-2.19-14.14-8.504-26.097-19.27-35.63C69.38 21.83 66.53 19.78 63.634 0z"/></svg><span>Scikit-learn</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 128 128" width="20" height="20"><path fill="#4DABCF" d="M62.002 3.43L4.383 36.717v66.572l57.619 33.289L119.621 103.29V36.717zm0 10.67l49.143 28.39v56.78L62.002 127.66 12.86 99.27v-56.78z"/><path fill="#4DABCF" d="M62.002 47.158L37.86 61.103v27.89l24.142 13.946 24.143-13.946v-27.89zm0 10.668l15.666 9.047v18.097l-15.666 9.047-15.667-9.047V66.873z"/></svg><span>NumPy</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 128 128" width="20" height="20"><path fill="#130654" d="M1.764 48.96h6.4v39.84h-6.4z"/><path fill="#E70488" d="M18.564 48.96h6.4v39.84h-6.4z"/><path fill="#130654" d="M35.364 38.56h6.4v50.24h-6.4zM52.164 28.16h6.4v60.64h-6.4z"/><path fill="#FFCA00" d="M68.964 48.96h6.4v39.84h-6.4z"/><path fill="#E70488" d="M85.764 28.16h6.4v60.64h-6.4z"/><path fill="#130654" d="M102.564 38.56h6.4v50.24h-6.4z"/><path fill="#FFCA00" d="M119.364 48.96h6.4v39.84h-6.4z"/></svg><span>Pandas</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="#76B7B2" d="M4 4c-1 2-2 5-2 8s.5 6 2 9"/><path fill="#EDC948" d="M8 5c-.8 2-1.5 4.5-1.5 7.5S7.2 18 8 20"/><path fill="#E15759" d="M12 6c-.5 1.5-1 3.5-1 6s.5 4.5 1 6.5"/><path fill="#4E79A7" d="M16 5c.8 2 1.5 4.5 1.5 7.5S16.8 18 16 20"/><path fill="#59A14F" d="M20 4c1 2 2 5 2 8s-.5 6-2 9"/></svg><span>Seaborn</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" fill="#11557C"/><text x="5" y="16" fill="white" font-size="9" font-weight="bold" font-family="sans-serif">Mpl</text></svg><span>Matplotlib</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="#F05032" d="M23.55 11.03L12.97.45a1.53 1.53 0 0 0-2.17 0L8.65 2.6l2.74 2.74a1.82 1.82 0 0 1 2.3 2.32l2.64 2.64a1.82 1.82 0 1 1-1.09 1.03l-2.46-2.46v6.47a1.82 1.82 0 1 1-1.5-.08V8.69a1.82 1.82 0 0 1-.99-2.39L7.57 3.58.45 10.7a1.53 1.53 0 0 0 0 2.17l10.58 10.58a1.53 1.53 0 0 0 2.17 0l10.35-10.35a1.53 1.53 0 0 0 0-2.17z"/></svg><span>Git</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg><span>GitHub</span></span>
+          <!-- set 2 -->
+          <span class="skill-pill"><svg viewBox="0 0 128 128" width="20" height="20"><path fill="#FF6F00" d="M49.6 96.1V80.8h-4.8v19.6h14v-4.3z"/><path fill="#FF6F00" d="M121.7 28.9h-24c-.6-6.8-3.7-12.4-10.5-16.2-5.6-3.2-12.4-4.6-19.7-4.6-8.4 0-16 2-21.5 6.3-5.3 4.2-8.1 9.8-8.1 16.4 0 5 1.8 9.2 5.3 12.4 3.4 3.2 8.6 5.5 15 7l7.8 1.8c4.5 1 7.7 2.2 9.6 3.6 1.8 1.3 2.6 3.2 2.6 5.6 0 3.1-1.5 5.5-4.5 7.2-3.2 1.8-7.5 2.7-13 2.7-5.3 0-9.8-1-13.4-3-3.7-2-5.9-4.6-6.7-7.8H35c1 7.4 4.6 13 10.8 16.6 6 3.5 13.5 5.2 22.1 5.2 8.9 0 16.3-2.1 21.8-6.3 5.6-4.3 8.4-10 8.4-16.9 0-5.4-1.8-9.7-5.5-13.1-3.6-3.3-9-5.7-16-7.3l-7.3-1.7c-4.5-1-7.5-2.2-9.1-3.5-1.5-1.2-2.3-2.9-2.3-5 0-2.9 1.4-5.2 4.3-6.8 2.9-1.7 6.8-2.5 11.8-2.5 4.7 0 8.5 1 11.4 2.8 2.7 1.7 4.4 4 5 7h21.3V28.9z"/></svg><span>TensorFlow</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 128 128" width="20" height="20"><path fill="#F89939" d="M63.634 0c-2.81 4.962-4.252 8.857-5.828 13.264-4.81 13.455-3.26 27.636 3.696 39.2l.243.39.798 1.277-.19-.249c-5.58-7.293-14.05-12.48-23.705-13.666C28.96 39.083 19.288 41.58 11.476 47.28c4.213 2.218 7.636 4.18 10.86 6.42 9.92 6.887 16.382 16.778 18.213 28.043.66 4.06.684 8.133.322 12.287 2.422-4.39 3.526-6.577 5.42-10.742 6.8-22.107 4.238-33.696-.305-1.38-.66-2.747-1.072-4.136 1.755 1.838 3.386 3.654 4.75 5.665 8.92 13.154 11.91 27.536 8.207 42.823l-.266 1.04.086-.133c7.13-11.244 9.996-23.456 7.826-36.566-1.49-8.997-5.495-17.104-11.273-24.4l-1.435-1.75c1.096.293 2.16.594 3.19.946 14.37 4.9 25.16 14.23 31.987 27.998 1.203 2.423 2.18 4.957 3.21 7.588-.258-4.244-.623-8.293-1.245-12.307-2.19-14.14-8.504-26.097-19.27-35.63C69.38 21.83 66.53 19.78 63.634 0z"/></svg><span>Scikit-learn</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 128 128" width="20" height="20"><path fill="#4DABCF" d="M62.002 3.43L4.383 36.717v66.572l57.619 33.289L119.621 103.29V36.717zm0 10.67l49.143 28.39v56.78L62.002 127.66 12.86 99.27v-56.78z"/><path fill="#4DABCF" d="M62.002 47.158L37.86 61.103v27.89l24.142 13.946 24.143-13.946v-27.89zm0 10.668l15.666 9.047v18.097l-15.666 9.047-15.667-9.047V66.873z"/></svg><span>NumPy</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 128 128" width="20" height="20"><path fill="#130654" d="M1.764 48.96h6.4v39.84h-6.4z"/><path fill="#E70488" d="M18.564 48.96h6.4v39.84h-6.4z"/><path fill="#130654" d="M35.364 38.56h6.4v50.24h-6.4zM52.164 28.16h6.4v60.64h-6.4z"/><path fill="#FFCA00" d="M68.964 48.96h6.4v39.84h-6.4z"/><path fill="#E70488" d="M85.764 28.16h6.4v60.64h-6.4z"/><path fill="#130654" d="M102.564 38.56h6.4v50.24h-6.4z"/><path fill="#FFCA00" d="M119.364 48.96h6.4v39.84h-6.4z"/></svg><span>Pandas</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="#76B7B2" d="M4 4c-1 2-2 5-2 8s.5 6 2 9"/><path fill="#EDC948" d="M8 5c-.8 2-1.5 4.5-1.5 7.5S7.2 18 8 20"/><path fill="#E15759" d="M12 6c-.5 1.5-1 3.5-1 6s.5 4.5 1 6.5"/><path fill="#4E79A7" d="M16 5c.8 2 1.5 4.5 1.5 7.5S16.8 18 16 20"/><path fill="#59A14F" d="M20 4c1 2 2 5 2 8s-.5 6-2 9"/></svg><span>Seaborn</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" fill="#11557C"/><text x="5" y="16" fill="white" font-size="9" font-weight="bold" font-family="sans-serif">Mpl</text></svg><span>Matplotlib</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="#F05032" d="M23.55 11.03L12.97.45a1.53 1.53 0 0 0-2.17 0L8.65 2.6l2.74 2.74a1.82 1.82 0 0 1 2.3 2.32l2.64 2.64a1.82 1.82 0 1 1-1.09 1.03l-2.46-2.46v6.47a1.82 1.82 0 1 1-1.5-.08V8.69a1.82 1.82 0 0 1-.99-2.39L7.57 3.58.45 10.7a1.53 1.53 0 0 0 0 2.17l10.58 10.58a1.53 1.53 0 0 0 2.17 0l10.35-10.35a1.53 1.53 0 0 0 0-2.17z"/></svg><span>Git</span></span>
+          <span class="skill-pill"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg><span>GitHub</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROJECTS ==================== -->
+  <section class="section projects" id="projects" aria-label="Projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag-badge">Portfolio</span>
+        <div class="section-divider"></div>
+        <h2 class="section-title">Featured Work &amp; Case Studies</h2>
+        <p class="section-subtitle">Data science models, analytics dashboards, and predictive systems</p>
+      </div>
+
+      <div class="project-filters reveal" role="group" aria-label="Filter projects">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="analytics">Analytics</button>
+        <button class="filter-btn" data-filter="ml">Machine Learning</button>
+        <button class="filter-btn" data-filter="viz">Visualization</button>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Gesture Controlled Media Player -->
+        <article class="project-card reveal" data-category="ml">
+          <div class="project-image">
+            <div class="project-image-placeholder" style="--ph:320">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+              <span>Gesture &amp; Computer Vision</span>
+            </div>
+            <div class="project-overlay">
+              <a href="https://github.com/Khushalpsai/gesture-controlled-media-player" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View source code for Gesture Controlled Media Player">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                Source Code
+              </a>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">MediaPipe</span>
+              <span class="project-tag">OpenCV</span>
+              <span class="project-tag">Computer Vision</span>
+            </div>
+            <h3 class="project-title">Gesture Controlled Media Player</h3>
+            <p class="project-description">Control your media player using hand gestures — no keyboard, no mouse, just your hand in front of a webcam. Built with Python, MediaPipe, and OpenCV. Uses real-time hand landmark detection with debounce &amp; stability filtering to trigger system-wide media keys via pyautogui.</p>
+          </div>
+        </article>
+
+        <!-- RAT -->
+        <article class="project-card reveal reveal-delay-1" data-category="analytics">
+          <div class="project-image">
+            <div class="project-image-placeholder" style="--ph:160">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              <span>Forensics &amp; Auditing</span>
+            </div>
+            <div class="project-overlay">
+              <a href="https://github.com/Khushalpsai" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View source code for RAT">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                Source Code
+              </a>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span class="project-tag">PowerShell</span>
+              <span class="project-tag">Raspberry Pi</span>
+              <span class="project-tag">System Auditing</span>
+              <span class="project-tag">Forensics</span>
+            </div>
+            <h3 class="project-title">RAT (Remote Audit Tool)</h3>
+            <p class="project-description">Built a portable forensic auditing tool using PowerShell and Raspberry Pi USB Gadget technology. Automates system, network, USB, and login history collection with zero-dependency HTML reports.</p>
+          </div>
+        </article>
+
+        <!-- Checkstyle -->
+        <article class="project-card reveal reveal-delay-2" data-category="analytics">
+          <div class="project-image">
+            <div class="project-image-placeholder" style="--ph:280">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              <span>Open Source (GSoC 2026)</span>
+            </div>
+            <div class="project-overlay">
+              <a href="https://github.com/Khushalpsai" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Checkstyle contributions">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                View Contributions
+              </a>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span class="project-tag">Java</span>
+              <span class="project-tag">GSoC 2026</span>
+              <span class="project-tag">Git / GitHub</span>
+              <span class="project-tag">Static Analysis</span>
+            </div>
+            <h3 class="project-title">Checkstyle Open Source Contribution</h3>
+            <p class="project-description">Merged 4 Pull Requests into Checkstyle Java code quality tool adhering to Google Java Style Guides. Participated in Google Summer of Code 2026 working on core AST checks and codebase workflows.</p>
+          </div>
+        </article>
+
+        <!-- Cloud & Data Analytics -->
+        <article class="project-card reveal reveal-delay-3" data-category="viz">
+          <div class="project-image">
+            <div class="project-image-placeholder" style="--ph:40">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+              <span>Data Analysis &amp; GCP</span>
+            </div>
+            <div class="project-overlay">
+              <a href="https://github.com/Khushalpsai" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View source code for Cloud and Data Analytics">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                Source Code
+              </a>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span class="project-tag">GCP</span>
+              <span class="project-tag">NumPy</span>
+              <span class="project-tag">Pandas</span>
+              <span class="project-tag">Matplotlib</span>
+              <span class="project-tag">Seaborn</span>
+            </div>
+            <h3 class="project-title">Cloud &amp; Exploratory Data Analytics</h3>
+            <p class="project-description">Exploratory data analysis workflows and cloud system implementations on GCP, featuring data manipulation with Pandas &amp; NumPy and statistical visualizations with Seaborn.</p>
+          </div>
+        </article>
+
+      </div><!-- .projects-grid -->
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section class="section contact" id="contact" aria-label="Contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag-badge">Get in Touch</span>
+        <div class="section-divider"></div>
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="section-subtitle">Open for data analytics, machine learning projects, and collaborations</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <h3 class="contact-heading">Let's work together</h3>
+          <p class="contact-text">I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!</p>
+
+          <div class="contact-methods">
+            <a href="mailto:khushalpsai@gmail.com" class="contact-method" id="contactEmail">
+              <div class="method-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <span class="method-label">Email</span>
+                <span class="method-value">khushalpsai@gmail.com</span>
+              </div>
             </a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#hero" class="nav-link active" data-section="hero">Home</a></li>
-                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
-                <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
-                <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
-                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
-            </ul>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span><span></span><span></span>
-            </button>
+            <div class="contact-method" id="contactLocation">
+              <div class="method-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <span class="method-label">Location</span>
+                <span class="method-value">Bangalore, India</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-links" aria-label="Social links">
+            <a href="https://github.com/Khushalpsai" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub profile" id="socialGithub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/sai-khushal-477365318/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn profile" id="socialLinkedin">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="hero-greeting">Heyaa im</span>
-                <span class="hero-name" id="heroName">Khushal</span>
-            </h1>
-            <p class="hero-description">
-                I learn best by turning ideas into something real. Instead of just learning concepts theoretically, I like understanding them through practical application — experimenting, building, breaking things, fixing them, and seeing how everything works together. I genuinely enjoy creating things with my own hands, whether it is a small experiment or a challenging project. For me, the best part of learning is the process of taking an idea from my head and turning it into something that actually works.
-            </p>
-            <div class="hero-cta">
-                <a href="#projects" class="btn btn-primary">
-                    <span>Explore Projects</span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-                <a href="#contact" class="btn btn-outline">
-                    <span>Get in Touch</span>
-                </a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number">11+</span>
-                    <span class="stat-label">Analytics &amp; ML Projects</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <span class="stat-number">9+</span>
-                    <span class="stat-label">Core Tech Stack Skills</span>
-                </div>
-            </div>
+        <form class="contact-form reveal reveal-delay-1" id="contactForm" novalidate>
+          <input type="hidden" name="access_key" value="afc661bf-73d6-4c8a-bb11-9bb525bf1e88">
+          <input type="hidden" name="subject" value="New Portfolio Contact Message">
+          <input type="hidden" name="from_name" value="Portfolio Website">
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" aria-hidden="true">
+          <div class="form-group">
+            <label for="formName" class="form-label">Your Name</label>
+            <input type="text" id="formName" name="name" class="form-input" placeholder="John Doe" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="formEmail" class="form-label">Your Email</label>
+            <input type="email" id="formEmail" name="email" class="form-input" placeholder="john@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="formSubject" class="form-label">Subject</label>
+            <input type="text" id="formSubject" name="subject" class="form-input" placeholder="Project Collaboration" required>
+          </div>
+          <div class="form-group">
+            <label for="formMessage" class="form-label">Message</label>
+            <textarea id="formMessage" name="message" class="form-input form-textarea" placeholder="Tell me about your project..." rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-submit" id="formSubmit">
+            <span class="btn-text">Send Message</span>
+            <span class="btn-loader" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            </span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+          <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo" aria-label="Back to top">
+            <span class="logo-bracket">&lt;</span>SK<span class="logo-bracket">/&gt;</span>
+          </a>
+          <p class="footer-tagline">Turning data into decisions, one model at a time.</p>
         </div>
-        
-        <!-- Hero Profile Photo -->
-        <div class="hero-visual">
-            <div class="hero-photo-card">
-                <div class="hero-photo-glow"></div>
-                <img src="profile.jpg" alt="Sai Khushal" class="hero-photo-img">
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-mouse">
-                <div class="scroll-wheel"></div>
-            </div>
-            <span>Scroll Down</span>
-        </div>
-    </section>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="currentYear"></span> Sai Khushal &mdash; Crafted with care.</p>
+      </div>
+    </div>
+  </footer>
 
-    <!-- About Section -->
-    <section class="section about" id="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag-badge">ABOUT ME</span>
-                <h2 class="section-title">Software Engineer &amp; Data Specialist</h2>
-                <p class="section-subtitle">Practical engineering, Machine Learning, and Data Analytics</p>
-            </div>
-            <div class="about-grid">
-                <div class="about-card-avatar">
-                    <div class="avatar-ring avatar-ring--large">
-                        <img src="profile.jpg" alt="Sai Khushal" class="avatar-img">
-                    </div>
-                    <div class="avatar-meta">
-                        <h3>Sai Khushal</h3>
-                        <p>VIT - AP University</p>
-                    </div>
-                </div>
-                <div class="about-content">
-                    <h3 class="about-heading">B.Tech CSE with specialization in Data Analytics</h3>
-                    <p class="about-text">
-                        I'm a Computer Science undergraduate at VIT - AP University specializing in Data Analytics. 
-                        Proficient in Java, Python, backend technologies, and machine learning, I focus on practical applications and robust software development.
-                    </p>
-                    <p class="about-text">
-                        From building machine learning models to open-source contributions (Checkstyle / GSoC 2026 participant) and low-level forensic tooling, 
-                        I enjoy solving complex software &amp; data challenges.
-                    </p>
-                    <div class="about-info-grid">
-                        <div class="about-info-item">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            <div>
-                                <span class="info-label">Location</span>
-                                <span class="info-value">Bangalore, India</span>
-                            </div>
-                        </div>
-                        <div class="about-info-item">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c6 5 10 0 16-2"/></svg>
-                            <div>
-                                <span class="info-label">Education</span>
-                                <span class="info-value">VIT - AP University</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="resume.pdf" class="btn btn-primary" download="Sai_Khushal_Resume.pdf">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        <span>Download Resume</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Scroll back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
 
-    <!-- Skills Section -->
-    <section class="section skills" id="skills">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag-badge">TECHNICAL STACK</span>
-                <h2 class="section-title">Skills &amp; Toolkit</h2>
-                <p class="section-subtitle">Core languages, machine learning frameworks, and data platforms</p>
-            </div>
-        </div>
-        <div class="skills-marquee-container">
-            <div class="skills-marquee-row">
-                <div class="skills-marquee-track marquee-right">
-                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#EA2D2E" d="M69.802 61.271c6.025 6.935-1.58 13.17-1.58 13.17s15.289-7.891 8.269-17.777c-6.559-9.215-11.587-13.793 15.635-29.58 0 .001-42.731 10.67-22.324 34.187z"/><path fill="#0074BD" d="M47.617 98.12s-4.767 2.774 3.397 3.71c9.892 1.13 14.947.968 25.845-1.092 0 0 2.871 1.795 6.873 3.351-24.439 10.47-55.308-.607-36.115-5.969z"/></svg>
-                        <span>Java</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#659AD2" d="M115.4 30.7L67.1 2.9c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.3 1 3.4l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c.7-.4 1.4-1 1.9-1.7.8-1.1 1-2.3 1-3.4V36.1c0-1.9-1.2-4.4-2.8-5.4zM61.9 100.7c-21.8 0-39.5-17.7-39.5-39.5S40.1 21.7 61.9 21.7c14.7 0 27.5 8.1 34.3 20l-13 7.5C78.8 41.3 71 36.2 61.9 36.2c-13.8 0-25 11.2-25 25s11.2 25 25 25c9.1 0 16.9-5.1 21.3-12.6l12.9 7.6c-6.7 12-19.5 19.5-34.2 19.5z"/></svg>
-                        <span>C/C++</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><linearGradient id="pyg1m" gradientUnits="userSpaceOnUse" x1="70.252" y1="1237.476" x2="170.659" y2="1151.089" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#5A9FD4"/><stop offset="1" stop-color="#306998"/></linearGradient><linearGradient id="pyg2m" gradientUnits="userSpaceOnUse" x1="209.474" y1="1098.811" x2="173.318" y2="1149.537" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#FFD43B"/><stop offset="1" stop-color="#FFE873"/></linearGradient><path fill="url(#pyg1m)" d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zM50.037 9.557c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z"/><path fill="url(#pyg2m)" d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM78.006 90.49c2.56 0 4.633 2.097 4.633 4.692 0 2.602-2.074 4.719-4.633 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z"/></svg>
-                        <span>Python</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#276DC3" d="M64.026 95.064c-21.473 0-45.208-8.181-45.208-31.212 0-23.033 23.735-31.215 45.208-31.215 21.474 0 45.209 8.182 45.209 31.215 0 23.031-23.735 31.212-45.209 31.212z"/></svg>
-                        <span>R</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#00618A" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><text x="6" y="16" fill="white" font-size="10" font-weight="bold" font-family="sans-serif">SQL</text></svg>
-                        <span>SQL</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#47A248" d="M14.28 10.74c-.5-1.52-1.3-3.23-2.1-4.88-.2-.39-.55-.66-.94-.66-.4 0-.74.27-.94.66-.8 1.65-1.6 3.36-2.1 4.88-1.52 4.49-1.94 7.6-1.94 9.17 0 2.5 1.63 4.25 4.3 4.25h1.36c2.67 0 4.3-1.75 4.3-4.25 0-1.57-.42-4.68-1.94-9.17zm-2.14 9.77c-.4 0-.74-.3-.74-.7s.34-.7.74-.7.74.3.74.7-.33.7-.74.7z"/><path fill="#47A248" d="M12 0C8.17 0 6.64 3.75 6.64 3.75l.6 1.83s1.28-2.5 4.76-2.5c3.48 0 4.76 2.5 4.76 2.5l.6-1.83S15.83 0 12 0z"/></svg>
-                        <span>MongoDB</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#DC382D" d="M20.25 7.614c-1.12-1.554-3.102-2.316-5.63-2.164C13.253 4.298 10.97 3.65 8.76 3.65c-2.4 0-4.32.748-5.36 2.083C1.653 7.82 2.38 10.74 4.54 13.06c.09.11.18.2.27.3.36 1.7.99 3.51 2.01 5.38C8.5 21.69 10.51 23 12.01 23c2.4 0 4.23-1.61 5.09-4.46a16.48 16.48 0 0 0 2.21-6.17c1.78-1.69 2.15-3.38.94-4.756zM8.76 4.96c1.65 0 3.39.46 5.16 1.34-1.25.75-2.22 1.66-2.9 2.7-.49.03-.97.07-1.45.15-2.84.45-5.32 1.54-6.38 2.81C2.39 10.9 3 8.35 4.41 6.64 5.3 5.44 6.86 4.96 8.76 4.96zM11.66 16.4c-1.5 2.66-3.1 3.5-4.5 3.5-1.07 0-1.87-.77-2.61-2.29-.68-1.39-1.2-2.92-1.48-4.3 1.13-1.24 3.56-2.29 6.27-2.73a11.17 11.17 0 0 1 1.77-.16c.55.93 1.25 1.73 2.08 2.4a15.82 15.82 0 0 1-1.53 3.58zM18 11.96a15.3 15.3 0 0 1-2.12 5.67c-.67 2.1-1.88 3.2-3.23 3.2-1.12 0-2.64-.99-4.22-3.66.24.2.49.4.74.57 2.11 1.48 5.1 1.69 7.78.58-1.14.73-2.62.91-4.23.47.74-.6 1.37-1.32 1.83-2.12a8.87 8.87 0 0 0 1.21-2.94c.15-.65.26-1.34.33-2.06.69-.37 1.47-.79 2.31-1.25a8.2 8.2 0 0 1-.4 1.54zm.76-1.92c-.89.51-1.78.96-2.63 1.36-.08-.85-.24-1.68-.45-2.48.91-.79 2.05-1.34 3.32-1.54a5.9 5.9 0 0 1-.24 2.66zM15.4 6.8c1.94-.13 3.37.45 4.12 1.49.62.86.5 1.95-.2 3.12-1.41.22-2.72.76-3.8 1.5-.09-.32-.2-.63-.33-.94-.85-2.07-2.22-3.8-3.92-5 1.15-.36 2.38-.63 3.65-.77a6 6 0 0 1 .48-.4zm-3.6 1.7c1.39 1.1 2.5 2.56 3.15 4.29a9.66 9.66 0 0 0-2.43 2.58 9.92 9.92 0 0 0-1.76-2.52 7.7 7.7 0 0 0 3.33-1.68c-1.15.54-2.52.88-4 .97a7.73 7.73 0 0 0 2.22-2.31c-.96.22-2.03.35-3.14.35h-.37c.75-1.1 1.72-2.06 2.87-2.85l.13 1.17z"/></svg>
-                        <span>Redis</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#4285F4" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>GCP</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#EA2D2E" d="M69.802 61.271c6.025 6.935-1.58 13.17-1.58 13.17s15.289-7.891 8.269-17.777c-6.559-9.215-11.587-13.793 15.635-29.58 0 .001-42.731 10.67-22.324 34.187z"/><path fill="#0074BD" d="M47.617 98.12s-4.767 2.774 3.397 3.71c9.892 1.13 14.947.968 25.845-1.092 0 0 2.871 1.795 6.873 3.351-24.439 10.47-55.308-.607-36.115-5.969z"/></svg>
-                        <span>Java</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#659AD2" d="M115.4 30.7L67.1 2.9c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.3 1 3.4l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c.7-.4 1.4-1 1.9-1.7.8-1.1 1-2.3 1-3.4V36.1c0-1.9-1.2-4.4-2.8-5.4zM61.9 100.7c-21.8 0-39.5-17.7-39.5-39.5S40.1 21.7 61.9 21.7c14.7 0 27.5 8.1 34.3 20l-13 7.5C78.8 41.3 71 36.2 61.9 36.2c-13.8 0-25 11.2-25 25s11.2 25 25 25c9.1 0 16.9-5.1 21.3-12.6l12.9 7.6c-6.7 12-19.5 19.5-34.2 19.5z"/></svg>
-                        <span>C/C++</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><linearGradient id="pyg1m" gradientUnits="userSpaceOnUse" x1="70.252" y1="1237.476" x2="170.659" y2="1151.089" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#5A9FD4"/><stop offset="1" stop-color="#306998"/></linearGradient><linearGradient id="pyg2m" gradientUnits="userSpaceOnUse" x1="209.474" y1="1098.811" x2="173.318" y2="1149.537" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#FFD43B"/><stop offset="1" stop-color="#FFE873"/></linearGradient><path fill="url(#pyg1m)" d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zM50.037 9.557c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z"/><path fill="url(#pyg2m)" d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM78.006 90.49c2.56 0 4.633 2.097 4.633 4.692 0 2.602-2.074 4.719-4.633 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z"/></svg>
-                        <span>Python</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#276DC3" d="M64.026 95.064c-21.473 0-45.208-8.181-45.208-31.212 0-23.033 23.735-31.215 45.208-31.215 21.474 0 45.209 8.182 45.209 31.215 0 23.031-23.735 31.212-45.209 31.212z"/></svg>
-                        <span>R</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#00618A" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><text x="6" y="16" fill="white" font-size="10" font-weight="bold" font-family="sans-serif">SQL</text></svg>
-                        <span>SQL</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#47A248" d="M14.28 10.74c-.5-1.52-1.3-3.23-2.1-4.88-.2-.39-.55-.66-.94-.66-.4 0-.74.27-.94.66-.8 1.65-1.6 3.36-2.1 4.88-1.52 4.49-1.94 7.6-1.94 9.17 0 2.5 1.63 4.25 4.3 4.25h1.36c2.67 0 4.3-1.75 4.3-4.25 0-1.57-.42-4.68-1.94-9.17zm-2.14 9.77c-.4 0-.74-.3-.74-.7s.34-.7.74-.7.74.3.74.7-.33.7-.74.7z"/><path fill="#47A248" d="M12 0C8.17 0 6.64 3.75 6.64 3.75l.6 1.83s1.28-2.5 4.76-2.5c3.48 0 4.76 2.5 4.76 2.5l.6-1.83S15.83 0 12 0z"/></svg>
-                        <span>MongoDB</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#DC382D" d="M20.25 7.614c-1.12-1.554-3.102-2.316-5.63-2.164C13.253 4.298 10.97 3.65 8.76 3.65c-2.4 0-4.32.748-5.36 2.083C1.653 7.82 2.38 10.74 4.54 13.06c.09.11.18.2.27.3.36 1.7.99 3.51 2.01 5.38C8.5 21.69 10.51 23 12.01 23c2.4 0 4.23-1.61 5.09-4.46a16.48 16.48 0 0 0 2.21-6.17c1.78-1.69 2.15-3.38.94-4.756zM8.76 4.96c1.65 0 3.39.46 5.16 1.34-1.25.75-2.22 1.66-2.9 2.7-.49.03-.97.07-1.45.15-2.84.45-5.32 1.54-6.38 2.81C2.39 10.9 3 8.35 4.41 6.64 5.3 5.44 6.86 4.96 8.76 4.96zM11.66 16.4c-1.5 2.66-3.1 3.5-4.5 3.5-1.07 0-1.87-.77-2.61-2.29-.68-1.39-1.2-2.92-1.48-4.3 1.13-1.24 3.56-2.29 6.27-2.73a11.17 11.17 0 0 1 1.77-.16c.55.93 1.25 1.73 2.08 2.4a15.82 15.82 0 0 1-1.53 3.58zM18 11.96a15.3 15.3 0 0 1-2.12 5.67c-.67 2.1-1.88 3.2-3.23 3.2-1.12 0-2.64-.99-4.22-3.66.24.2.49.4.74.57 2.11 1.48 5.1 1.69 7.78.58-1.14.73-2.62.91-4.23.47.74-.6 1.37-1.32 1.83-2.12a8.87 8.87 0 0 0 1.21-2.94c.15-.65.26-1.34.33-2.06.69-.37 1.47-.79 2.31-1.25a8.2 8.2 0 0 1-.4 1.54zm.76-1.92c-.89.51-1.78.96-2.63 1.36-.08-.85-.24-1.68-.45-2.48.91-.79 2.05-1.34 3.32-1.54a5.9 5.9 0 0 1-.24 2.66zM15.4 6.8c1.94-.13 3.37.45 4.12 1.49.62.86.5 1.95-.2 3.12-1.41.22-2.72.76-3.8 1.5-.09-.32-.2-.63-.33-.94-.85-2.07-2.22-3.8-3.92-5 1.15-.36 2.38-.63 3.65-.77a6 6 0 0 1 .48-.4zm-3.6 1.7c1.39 1.1 2.5 2.56 3.15 4.29a9.66 9.66 0 0 0-2.43 2.58 9.92 9.92 0 0 0-1.76-2.52 7.7 7.7 0 0 0 3.33-1.68c-1.15.54-2.52.88-4 .97a7.73 7.73 0 0 0 2.22-2.31c-.96.22-2.03.35-3.14.35h-.37c.75-1.1 1.72-2.06 2.87-2.85l.13 1.17z"/></svg>
-                        <span>Redis</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#4285F4" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>GCP</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#EA2D2E" d="M69.802 61.271c6.025 6.935-1.58 13.17-1.58 13.17s15.289-7.891 8.269-17.777c-6.559-9.215-11.587-13.793 15.635-29.58 0 .001-42.731 10.67-22.324 34.187z"/><path fill="#0074BD" d="M47.617 98.12s-4.767 2.774 3.397 3.71c9.892 1.13 14.947.968 25.845-1.092 0 0 2.871 1.795 6.873 3.351-24.439 10.47-55.308-.607-36.115-5.969z"/></svg>
-                        <span>Java</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#659AD2" d="M115.4 30.7L67.1 2.9c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.3 1 3.4l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c.7-.4 1.4-1 1.9-1.7.8-1.1 1-2.3 1-3.4V36.1c0-1.9-1.2-4.4-2.8-5.4zM61.9 100.7c-21.8 0-39.5-17.7-39.5-39.5S40.1 21.7 61.9 21.7c14.7 0 27.5 8.1 34.3 20l-13 7.5C78.8 41.3 71 36.2 61.9 36.2c-13.8 0-25 11.2-25 25s11.2 25 25 25c9.1 0 16.9-5.1 21.3-12.6l12.9 7.6c-6.7 12-19.5 19.5-34.2 19.5z"/></svg>
-                        <span>C/C++</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><linearGradient id="pyg1m" gradientUnits="userSpaceOnUse" x1="70.252" y1="1237.476" x2="170.659" y2="1151.089" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#5A9FD4"/><stop offset="1" stop-color="#306998"/></linearGradient><linearGradient id="pyg2m" gradientUnits="userSpaceOnUse" x1="209.474" y1="1098.811" x2="173.318" y2="1149.537" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#FFD43B"/><stop offset="1" stop-color="#FFE873"/></linearGradient><path fill="url(#pyg1m)" d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zM50.037 9.557c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z"/><path fill="url(#pyg2m)" d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM78.006 90.49c2.56 0 4.633 2.097 4.633 4.692 0 2.602-2.074 4.719-4.633 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z"/></svg>
-                        <span>Python</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#276DC3" d="M64.026 95.064c-21.473 0-45.208-8.181-45.208-31.212 0-23.033 23.735-31.215 45.208-31.215 21.474 0 45.209 8.182 45.209 31.215 0 23.031-23.735 31.212-45.209 31.212z"/></svg>
-                        <span>R</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#00618A" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><text x="6" y="16" fill="white" font-size="10" font-weight="bold" font-family="sans-serif">SQL</text></svg>
-                        <span>SQL</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#47A248" d="M14.28 10.74c-.5-1.52-1.3-3.23-2.1-4.88-.2-.39-.55-.66-.94-.66-.4 0-.74.27-.94.66-.8 1.65-1.6 3.36-2.1 4.88-1.52 4.49-1.94 7.6-1.94 9.17 0 2.5 1.63 4.25 4.3 4.25h1.36c2.67 0 4.3-1.75 4.3-4.25 0-1.57-.42-4.68-1.94-9.17zm-2.14 9.77c-.4 0-.74-.3-.74-.7s.34-.7.74-.7.74.3.74.7-.33.7-.74.7z"/><path fill="#47A248" d="M12 0C8.17 0 6.64 3.75 6.64 3.75l.6 1.83s1.28-2.5 4.76-2.5c3.48 0 4.76 2.5 4.76 2.5l.6-1.83S15.83 0 12 0z"/></svg>
-                        <span>MongoDB</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#DC382D" d="M20.25 7.614c-1.12-1.554-3.102-2.316-5.63-2.164C13.253 4.298 10.97 3.65 8.76 3.65c-2.4 0-4.32.748-5.36 2.083C1.653 7.82 2.38 10.74 4.54 13.06c.09.11.18.2.27.3.36 1.7.99 3.51 2.01 5.38C8.5 21.69 10.51 23 12.01 23c2.4 0 4.23-1.61 5.09-4.46a16.48 16.48 0 0 0 2.21-6.17c1.78-1.69 2.15-3.38.94-4.756zM8.76 4.96c1.65 0 3.39.46 5.16 1.34-1.25.75-2.22 1.66-2.9 2.7-.49.03-.97.07-1.45.15-2.84.45-5.32 1.54-6.38 2.81C2.39 10.9 3 8.35 4.41 6.64 5.3 5.44 6.86 4.96 8.76 4.96zM11.66 16.4c-1.5 2.66-3.1 3.5-4.5 3.5-1.07 0-1.87-.77-2.61-2.29-.68-1.39-1.2-2.92-1.48-4.3 1.13-1.24 3.56-2.29 6.27-2.73a11.17 11.17 0 0 1 1.77-.16c.55.93 1.25 1.73 2.08 2.4a15.82 15.82 0 0 1-1.53 3.58zM18 11.96a15.3 15.3 0 0 1-2.12 5.67c-.67 2.1-1.88 3.2-3.23 3.2-1.12 0-2.64-.99-4.22-3.66.24.2.49.4.74.57 2.11 1.48 5.1 1.69 7.78.58-1.14.73-2.62.91-4.23.47.74-.6 1.37-1.32 1.83-2.12a8.87 8.87 0 0 0 1.21-2.94c.15-.65.26-1.34.33-2.06.69-.37 1.47-.79 2.31-1.25a8.2 8.2 0 0 1-.4 1.54zm.76-1.92c-.89.51-1.78.96-2.63 1.36-.08-.85-.24-1.68-.45-2.48.91-.79 2.05-1.34 3.32-1.54a5.9 5.9 0 0 1-.24 2.66zM15.4 6.8c1.94-.13 3.37.45 4.12 1.49.62.86.5 1.95-.2 3.12-1.41.22-2.72.76-3.8 1.5-.09-.32-.2-.63-.33-.94-.85-2.07-2.22-3.8-3.92-5 1.15-.36 2.38-.63 3.65-.77a6 6 0 0 1 .48-.4zm-3.6 1.7c1.39 1.1 2.5 2.56 3.15 4.29a9.66 9.66 0 0 0-2.43 2.58 9.92 9.92 0 0 0-1.76-2.52 7.7 7.7 0 0 0 3.33-1.68c-1.15.54-2.52.88-4 .97a7.73 7.73 0 0 0 2.22-2.31c-.96.22-2.03.35-3.14.35h-.37c.75-1.1 1.72-2.06 2.87-2.85l.13 1.17z"/></svg>
-                        <span>Redis</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#4285F4" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>GCP</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#EA2D2E" d="M69.802 61.271c6.025 6.935-1.58 13.17-1.58 13.17s15.289-7.891 8.269-17.777c-6.559-9.215-11.587-13.793 15.635-29.58 0 .001-42.731 10.67-22.324 34.187z"/><path fill="#0074BD" d="M47.617 98.12s-4.767 2.774 3.397 3.71c9.892 1.13 14.947.968 25.845-1.092 0 0 2.871 1.795 6.873 3.351-24.439 10.47-55.308-.607-36.115-5.969z"/></svg>
-                        <span>Java</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#659AD2" d="M115.4 30.7L67.1 2.9c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.3 1 3.4l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c.7-.4 1.4-1 1.9-1.7.8-1.1 1-2.3 1-3.4V36.1c0-1.9-1.2-4.4-2.8-5.4zM61.9 100.7c-21.8 0-39.5-17.7-39.5-39.5S40.1 21.7 61.9 21.7c14.7 0 27.5 8.1 34.3 20l-13 7.5C78.8 41.3 71 36.2 61.9 36.2c-13.8 0-25 11.2-25 25s11.2 25 25 25c9.1 0 16.9-5.1 21.3-12.6l12.9 7.6c-6.7 12-19.5 19.5-34.2 19.5z"/></svg>
-                        <span>C/C++</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><linearGradient id="pyg1m" gradientUnits="userSpaceOnUse" x1="70.252" y1="1237.476" x2="170.659" y2="1151.089" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#5A9FD4"/><stop offset="1" stop-color="#306998"/></linearGradient><linearGradient id="pyg2m" gradientUnits="userSpaceOnUse" x1="209.474" y1="1098.811" x2="173.318" y2="1149.537" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#FFD43B"/><stop offset="1" stop-color="#FFE873"/></linearGradient><path fill="url(#pyg1m)" d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zM50.037 9.557c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z"/><path fill="url(#pyg2m)" d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM78.006 90.49c2.56 0 4.633 2.097 4.633 4.692 0 2.602-2.074 4.719-4.633 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z"/></svg>
-                        <span>Python</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#276DC3" d="M64.026 95.064c-21.473 0-45.208-8.181-45.208-31.212 0-23.033 23.735-31.215 45.208-31.215 21.474 0 45.209 8.182 45.209 31.215 0 23.031-23.735 31.212-45.209 31.212z"/></svg>
-                        <span>R</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#00618A" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><text x="6" y="16" fill="white" font-size="10" font-weight="bold" font-family="sans-serif">SQL</text></svg>
-                        <span>SQL</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#47A248" d="M14.28 10.74c-.5-1.52-1.3-3.23-2.1-4.88-.2-.39-.55-.66-.94-.66-.4 0-.74.27-.94.66-.8 1.65-1.6 3.36-2.1 4.88-1.52 4.49-1.94 7.6-1.94 9.17 0 2.5 1.63 4.25 4.3 4.25h1.36c2.67 0 4.3-1.75 4.3-4.25 0-1.57-.42-4.68-1.94-9.17zm-2.14 9.77c-.4 0-.74-.3-.74-.7s.34-.7.74-.7.74.3.74.7-.33.7-.74.7z"/><path fill="#47A248" d="M12 0C8.17 0 6.64 3.75 6.64 3.75l.6 1.83s1.28-2.5 4.76-2.5c3.48 0 4.76 2.5 4.76 2.5l.6-1.83S15.83 0 12 0z"/></svg>
-                        <span>MongoDB</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#DC382D" d="M20.25 7.614c-1.12-1.554-3.102-2.316-5.63-2.164C13.253 4.298 10.97 3.65 8.76 3.65c-2.4 0-4.32.748-5.36 2.083C1.653 7.82 2.38 10.74 4.54 13.06c.09.11.18.2.27.3.36 1.7.99 3.51 2.01 5.38C8.5 21.69 10.51 23 12.01 23c2.4 0 4.23-1.61 5.09-4.46a16.48 16.48 0 0 0 2.21-6.17c1.78-1.69 2.15-3.38.94-4.756zM8.76 4.96c1.65 0 3.39.46 5.16 1.34-1.25.75-2.22 1.66-2.9 2.7-.49.03-.97.07-1.45.15-2.84.45-5.32 1.54-6.38 2.81C2.39 10.9 3 8.35 4.41 6.64 5.3 5.44 6.86 4.96 8.76 4.96zM11.66 16.4c-1.5 2.66-3.1 3.5-4.5 3.5-1.07 0-1.87-.77-2.61-2.29-.68-1.39-1.2-2.92-1.48-4.3 1.13-1.24 3.56-2.29 6.27-2.73a11.17 11.17 0 0 1 1.77-.16c.55.93 1.25 1.73 2.08 2.4a15.82 15.82 0 0 1-1.53 3.58zM18 11.96a15.3 15.3 0 0 1-2.12 5.67c-.67 2.1-1.88 3.2-3.23 3.2-1.12 0-2.64-.99-4.22-3.66.24.2.49.4.74.57 2.11 1.48 5.1 1.69 7.78.58-1.14.73-2.62.91-4.23.47.74-.6 1.37-1.32 1.83-2.12a8.87 8.87 0 0 0 1.21-2.94c.15-.65.26-1.34.33-2.06.69-.37 1.47-.79 2.31-1.25a8.2 8.2 0 0 1-.4 1.54zm.76-1.92c-.89.51-1.78.96-2.63 1.36-.08-.85-.24-1.68-.45-2.48.91-.79 2.05-1.34 3.32-1.54a5.9 5.9 0 0 1-.24 2.66zM15.4 6.8c1.94-.13 3.37.45 4.12 1.49.62.86.5 1.95-.2 3.12-1.41.22-2.72.76-3.8 1.5-.09-.32-.2-.63-.33-.94-.85-2.07-2.22-3.8-3.92-5 1.15-.36 2.38-.63 3.65-.77a6 6 0 0 1 .48-.4zm-3.6 1.7c1.39 1.1 2.5 2.56 3.15 4.29a9.66 9.66 0 0 0-2.43 2.58 9.92 9.92 0 0 0-1.76-2.52 7.7 7.7 0 0 0 3.33-1.68c-1.15.54-2.52.88-4 .97a7.73 7.73 0 0 0 2.22-2.31c-.96.22-2.03.35-3.14.35h-.37c.75-1.1 1.72-2.06 2.87-2.85l.13 1.17z"/></svg>
-                        <span>Redis</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#4285F4" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>GCP</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skills-marquee-row">
-                <div class="skills-marquee-track marquee-left">
-                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#FF6F00" d="M49.6 96.1V80.8h-4.8v19.6h14v-4.3z"/><path fill="#FF6F00" d="M121.7 28.9h-24c-.6-6.8-3.7-12.4-10.5-16.2-5.6-3.2-12.4-4.6-19.7-4.6-8.4 0-16 2-21.5 6.3-5.3 4.2-8.1 9.8-8.1 16.4 0 5 1.8 9.2 5.3 12.4 3.4 3.2 8.6 5.5 15 7l7.8 1.8c4.5 1 7.7 2.2 9.6 3.6 1.8 1.3 2.6 3.2 2.6 5.6 0 3.1-1.5 5.5-4.5 7.2-3.2 1.8-7.5 2.7-13 2.7-5.3 0-9.8-1-13.4-3-3.7-2-5.9-4.6-6.7-7.8H35c1 7.4 4.6 13 10.8 16.6 6 3.5 13.5 5.2 22.1 5.2 8.9 0 16.3-2.1 21.8-6.3 5.6-4.3 8.4-10 8.4-16.9 0-5.4-1.8-9.7-5.5-13.1-3.6-3.3-9-5.7-16-7.3l-7.3-1.7c-4.5-1-7.5-2.2-9.1-3.5-1.5-1.2-2.3-2.9-2.3-5 0-2.9 1.4-5.2 4.3-6.8 2.9-1.7 6.8-2.5 11.8-2.5 4.7 0 8.5 1 11.4 2.8 2.7 1.7 4.4 4 5 7h21.3V28.9z"/></svg>
-                        <span>TensorFlow</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#F89939" d="M63.634 0c-2.81 4.962-4.252 8.857-5.828 13.264-4.81 13.455-3.26 27.636 3.696 39.2l.243.39c.26.425.522.853.798 1.277l-.19-.249c-5.58-7.293-14.05-12.48-23.705-13.666C28.96 39.083 19.288 41.58 11.476 47.28c4.213 2.218 7.636 4.18 10.86 6.42 9.92 6.887 16.382 16.778 18.213 28.043.66 4.06.684 8.133.322 12.287-.002.023 2.422-4.39 3.526-6.577 5.42-10.742 6.8-22.107 4.238-33.696-.305-1.38-.66-2.747-1.072-4.136 1.755 1.838 3.386 3.654 4.75 5.665 8.92 13.154 11.91 27.536 8.207 42.823-.084.347-.172.693-.266 1.04l.086-.133c7.13-11.244 9.996-23.456 7.826-36.566-1.49-8.997-5.495-17.104-11.273-24.4-.467-.59-.944-1.172-1.435-1.75 1.096.293 2.16.594 3.19.946 14.37 4.9 25.16 14.23 31.987 27.998 1.203 2.423 2.18 4.957 3.21 7.588-.258-4.244-.623-8.293-1.245-12.307-2.19-14.14-8.504-26.097-19.27-35.63C69.38 21.83 66.53 19.78 63.634 0z"/></svg>
-                        <span>Scikit-learn</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#4DABCF" d="M62.002 3.43L4.383 36.717v66.572l57.619 33.289L119.621 103.29V36.717zm0 10.67l49.143 28.39v56.78L62.002 127.66 12.86 99.27v-56.78z"/><path fill="#4DABCF" d="M62.002 47.158L37.86 61.103v27.89l24.142 13.946 24.143-13.946v-27.89zm0 10.668l15.666 9.047v18.097l-15.666 9.047-15.667-9.047V66.873z"/></svg>
-                        <span>Numpy</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#130654" d="M1.764 48.96h6.4v39.84h-6.4z"/><path fill="#E70488" d="M18.564 48.96h6.4v39.84h-6.4z"/><path fill="#130654" d="M35.364 38.56h6.4v50.24h-6.4zM52.164 28.16h6.4v60.64h-6.4z"/><path fill="#FFCA00" d="M68.964 48.96h6.4v39.84h-6.4z"/><path fill="#E70488" d="M85.764 28.16h6.4v60.64h-6.4z"/><path fill="#130654" d="M102.564 38.56h6.4v50.24h-6.4z"/><path fill="#FFCA00" d="M119.364 48.96h6.4v39.84h-6.4z"/></svg>
-                        <span>Pandas</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#76B7B2" d="M4 4c-1 2-2 5-2 8s.5 6 2 9"/><path fill="#EDC948" d="M8 5c-.8 2-1.5 4.5-1.5 7.5S7.2 18 8 20"/><path fill="#E15759" d="M12 6c-.5 1.5-1 3.5-1 6s.5 4.5 1 6.5"/><path fill="#4E79A7" d="M16 5c.8 2 1.5 4.5 1.5 7.5S16.8 18 16 20"/><path fill="#59A14F" d="M20 4c1 2 2 5 2 8s-.5 6-2 9"/></svg>
-                        <span>Seaborn</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#11557C" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><text x="5" y="16" fill="white" font-size="9" font-weight="bold" font-family="sans-serif">Mpl</text></svg>
-                        <span>Matplotlib</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#F05032" d="M23.55 11.03L12.97.45a1.53 1.53 0 0 0-2.17 0L8.65 2.6l2.74 2.74a1.82 1.82 0 0 1 2.3 2.32l2.64 2.64a1.82 1.82 0 1 1-1.09 1.03l-2.46-2.46v6.47a1.82 1.82 0 1 1-1.5-.08V8.69a1.82 1.82 0 0 1-.99-2.39L7.57 3.58.45 10.7a1.53 1.53 0 0 0 0 2.17l10.58 10.58a1.53 1.53 0 0 0 2.17 0l10.35-10.35a1.53 1.53 0 0 0 0-2.17z"/></svg>
-                        <span>Git</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#FFF" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                        <span>Github</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#FF6F00" d="M49.6 96.1V80.8h-4.8v19.6h14v-4.3z"/><path fill="#FF6F00" d="M121.7 28.9h-24c-.6-6.8-3.7-12.4-10.5-16.2-5.6-3.2-12.4-4.6-19.7-4.6-8.4 0-16 2-21.5 6.3-5.3 4.2-8.1 9.8-8.1 16.4 0 5 1.8 9.2 5.3 12.4 3.4 3.2 8.6 5.5 15 7l7.8 1.8c4.5 1 7.7 2.2 9.6 3.6 1.8 1.3 2.6 3.2 2.6 5.6 0 3.1-1.5 5.5-4.5 7.2-3.2 1.8-7.5 2.7-13 2.7-5.3 0-9.8-1-13.4-3-3.7-2-5.9-4.6-6.7-7.8H35c1 7.4 4.6 13 10.8 16.6 6 3.5 13.5 5.2 22.1 5.2 8.9 0 16.3-2.1 21.8-6.3 5.6-4.3 8.4-10 8.4-16.9 0-5.4-1.8-9.7-5.5-13.1-3.6-3.3-9-5.7-16-7.3l-7.3-1.7c-4.5-1-7.5-2.2-9.1-3.5-1.5-1.2-2.3-2.9-2.3-5 0-2.9 1.4-5.2 4.3-6.8 2.9-1.7 6.8-2.5 11.8-2.5 4.7 0 8.5 1 11.4 2.8 2.7 1.7 4.4 4 5 7h21.3V28.9z"/></svg>
-                        <span>TensorFlow</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#F89939" d="M63.634 0c-2.81 4.962-4.252 8.857-5.828 13.264-4.81 13.455-3.26 27.636 3.696 39.2l.243.39c.26.425.522.853.798 1.277l-.19-.249c-5.58-7.293-14.05-12.48-23.705-13.666C28.96 39.083 19.288 41.58 11.476 47.28c4.213 2.218 7.636 4.18 10.86 6.42 9.92 6.887 16.382 16.778 18.213 28.043.66 4.06.684 8.133.322 12.287-.002.023 2.422-4.39 3.526-6.577 5.42-10.742 6.8-22.107 4.238-33.696-.305-1.38-.66-2.747-1.072-4.136 1.755 1.838 3.386 3.654 4.75 5.665 8.92 13.154 11.91 27.536 8.207 42.823-.084.347-.172.693-.266 1.04l.086-.133c7.13-11.244 9.996-23.456 7.826-36.566-1.49-8.997-5.495-17.104-11.273-24.4-.467-.59-.944-1.172-1.435-1.75 1.096.293 2.16.594 3.19.946 14.37 4.9 25.16 14.23 31.987 27.998 1.203 2.423 2.18 4.957 3.21 7.588-.258-4.244-.623-8.293-1.245-12.307-2.19-14.14-8.504-26.097-19.27-35.63C69.38 21.83 66.53 19.78 63.634 0z"/></svg>
-                        <span>Scikit-learn</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#4DABCF" d="M62.002 3.43L4.383 36.717v66.572l57.619 33.289L119.621 103.29V36.717zm0 10.67l49.143 28.39v56.78L62.002 127.66 12.86 99.27v-56.78z"/><path fill="#4DABCF" d="M62.002 47.158L37.86 61.103v27.89l24.142 13.946 24.143-13.946v-27.89zm0 10.668l15.666 9.047v18.097l-15.666 9.047-15.667-9.047V66.873z"/></svg>
-                        <span>Numpy</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#130654" d="M1.764 48.96h6.4v39.84h-6.4z"/><path fill="#E70488" d="M18.564 48.96h6.4v39.84h-6.4z"/><path fill="#130654" d="M35.364 38.56h6.4v50.24h-6.4zM52.164 28.16h6.4v60.64h-6.4z"/><path fill="#FFCA00" d="M68.964 48.96h6.4v39.84h-6.4z"/><path fill="#E70488" d="M85.764 28.16h6.4v60.64h-6.4z"/><path fill="#130654" d="M102.564 38.56h6.4v50.24h-6.4z"/><path fill="#FFCA00" d="M119.364 48.96h6.4v39.84h-6.4z"/></svg>
-                        <span>Pandas</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#76B7B2" d="M4 4c-1 2-2 5-2 8s.5 6 2 9"/><path fill="#EDC948" d="M8 5c-.8 2-1.5 4.5-1.5 7.5S7.2 18 8 20"/><path fill="#E15759" d="M12 6c-.5 1.5-1 3.5-1 6s.5 4.5 1 6.5"/><path fill="#4E79A7" d="M16 5c.8 2 1.5 4.5 1.5 7.5S16.8 18 16 20"/><path fill="#59A14F" d="M20 4c1 2 2 5 2 8s-.5 6-2 9"/></svg>
-                        <span>Seaborn</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#11557C" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><text x="5" y="16" fill="white" font-size="9" font-weight="bold" font-family="sans-serif">Mpl</text></svg>
-                        <span>Matplotlib</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#F05032" d="M23.55 11.03L12.97.45a1.53 1.53 0 0 0-2.17 0L8.65 2.6l2.74 2.74a1.82 1.82 0 0 1 2.3 2.32l2.64 2.64a1.82 1.82 0 1 1-1.09 1.03l-2.46-2.46v6.47a1.82 1.82 0 1 1-1.5-.08V8.69a1.82 1.82 0 0 1-.99-2.39L7.57 3.58.45 10.7a1.53 1.53 0 0 0 0 2.17l10.58 10.58a1.53 1.53 0 0 0 2.17 0l10.35-10.35a1.53 1.53 0 0 0 0-2.17z"/></svg>
-                        <span>Git</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#FFF" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                        <span>Github</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#FF6F00" d="M49.6 96.1V80.8h-4.8v19.6h14v-4.3z"/><path fill="#FF6F00" d="M121.7 28.9h-24c-.6-6.8-3.7-12.4-10.5-16.2-5.6-3.2-12.4-4.6-19.7-4.6-8.4 0-16 2-21.5 6.3-5.3 4.2-8.1 9.8-8.1 16.4 0 5 1.8 9.2 5.3 12.4 3.4 3.2 8.6 5.5 15 7l7.8 1.8c4.5 1 7.7 2.2 9.6 3.6 1.8 1.3 2.6 3.2 2.6 5.6 0 3.1-1.5 5.5-4.5 7.2-3.2 1.8-7.5 2.7-13 2.7-5.3 0-9.8-1-13.4-3-3.7-2-5.9-4.6-6.7-7.8H35c1 7.4 4.6 13 10.8 16.6 6 3.5 13.5 5.2 22.1 5.2 8.9 0 16.3-2.1 21.8-6.3 5.6-4.3 8.4-10 8.4-16.9 0-5.4-1.8-9.7-5.5-13.1-3.6-3.3-9-5.7-16-7.3l-7.3-1.7c-4.5-1-7.5-2.2-9.1-3.5-1.5-1.2-2.3-2.9-2.3-5 0-2.9 1.4-5.2 4.3-6.8 2.9-1.7 6.8-2.5 11.8-2.5 4.7 0 8.5 1 11.4 2.8 2.7 1.7 4.4 4 5 7h21.3V28.9z"/></svg>
-                        <span>TensorFlow</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#F89939" d="M63.634 0c-2.81 4.962-4.252 8.857-5.828 13.264-4.81 13.455-3.26 27.636 3.696 39.2l.243.39c.26.425.522.853.798 1.277l-.19-.249c-5.58-7.293-14.05-12.48-23.705-13.666C28.96 39.083 19.288 41.58 11.476 47.28c4.213 2.218 7.636 4.18 10.86 6.42 9.92 6.887 16.382 16.778 18.213 28.043.66 4.06.684 8.133.322 12.287-.002.023 2.422-4.39 3.526-6.577 5.42-10.742 6.8-22.107 4.238-33.696-.305-1.38-.66-2.747-1.072-4.136 1.755 1.838 3.386 3.654 4.75 5.665 8.92 13.154 11.91 27.536 8.207 42.823-.084.347-.172.693-.266 1.04l.086-.133c7.13-11.244 9.996-23.456 7.826-36.566-1.49-8.997-5.495-17.104-11.273-24.4-.467-.59-.944-1.172-1.435-1.75 1.096.293 2.16.594 3.19.946 14.37 4.9 25.16 14.23 31.987 27.998 1.203 2.423 2.18 4.957 3.21 7.588-.258-4.244-.623-8.293-1.245-12.307-2.19-14.14-8.504-26.097-19.27-35.63C69.38 21.83 66.53 19.78 63.634 0z"/></svg>
-                        <span>Scikit-learn</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#4DABCF" d="M62.002 3.43L4.383 36.717v66.572l57.619 33.289L119.621 103.29V36.717zm0 10.67l49.143 28.39v56.78L62.002 127.66 12.86 99.27v-56.78z"/><path fill="#4DABCF" d="M62.002 47.158L37.86 61.103v27.89l24.142 13.946 24.143-13.946v-27.89zm0 10.668l15.666 9.047v18.097l-15.666 9.047-15.667-9.047V66.873z"/></svg>
-                        <span>Numpy</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#130654" d="M1.764 48.96h6.4v39.84h-6.4z"/><path fill="#E70488" d="M18.564 48.96h6.4v39.84h-6.4z"/><path fill="#130654" d="M35.364 38.56h6.4v50.24h-6.4zM52.164 28.16h6.4v60.64h-6.4z"/><path fill="#FFCA00" d="M68.964 48.96h6.4v39.84h-6.4z"/><path fill="#E70488" d="M85.764 28.16h6.4v60.64h-6.4z"/><path fill="#130654" d="M102.564 38.56h6.4v50.24h-6.4z"/><path fill="#FFCA00" d="M119.364 48.96h6.4v39.84h-6.4z"/></svg>
-                        <span>Pandas</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#76B7B2" d="M4 4c-1 2-2 5-2 8s.5 6 2 9"/><path fill="#EDC948" d="M8 5c-.8 2-1.5 4.5-1.5 7.5S7.2 18 8 20"/><path fill="#E15759" d="M12 6c-.5 1.5-1 3.5-1 6s.5 4.5 1 6.5"/><path fill="#4E79A7" d="M16 5c.8 2 1.5 4.5 1.5 7.5S16.8 18 16 20"/><path fill="#59A14F" d="M20 4c1 2 2 5 2 8s-.5 6-2 9"/></svg>
-                        <span>Seaborn</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#11557C" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><text x="5" y="16" fill="white" font-size="9" font-weight="bold" font-family="sans-serif">Mpl</text></svg>
-                        <span>Matplotlib</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#F05032" d="M23.55 11.03L12.97.45a1.53 1.53 0 0 0-2.17 0L8.65 2.6l2.74 2.74a1.82 1.82 0 0 1 2.3 2.32l2.64 2.64a1.82 1.82 0 1 1-1.09 1.03l-2.46-2.46v6.47a1.82 1.82 0 1 1-1.5-.08V8.69a1.82 1.82 0 0 1-.99-2.39L7.57 3.58.45 10.7a1.53 1.53 0 0 0 0 2.17l10.58 10.58a1.53 1.53 0 0 0 2.17 0l10.35-10.35a1.53 1.53 0 0 0 0-2.17z"/></svg>
-                        <span>Git</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#FFF" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                        <span>Github</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#FF6F00" d="M49.6 96.1V80.8h-4.8v19.6h14v-4.3z"/><path fill="#FF6F00" d="M121.7 28.9h-24c-.6-6.8-3.7-12.4-10.5-16.2-5.6-3.2-12.4-4.6-19.7-4.6-8.4 0-16 2-21.5 6.3-5.3 4.2-8.1 9.8-8.1 16.4 0 5 1.8 9.2 5.3 12.4 3.4 3.2 8.6 5.5 15 7l7.8 1.8c4.5 1 7.7 2.2 9.6 3.6 1.8 1.3 2.6 3.2 2.6 5.6 0 3.1-1.5 5.5-4.5 7.2-3.2 1.8-7.5 2.7-13 2.7-5.3 0-9.8-1-13.4-3-3.7-2-5.9-4.6-6.7-7.8H35c1 7.4 4.6 13 10.8 16.6 6 3.5 13.5 5.2 22.1 5.2 8.9 0 16.3-2.1 21.8-6.3 5.6-4.3 8.4-10 8.4-16.9 0-5.4-1.8-9.7-5.5-13.1-3.6-3.3-9-5.7-16-7.3l-7.3-1.7c-4.5-1-7.5-2.2-9.1-3.5-1.5-1.2-2.3-2.9-2.3-5 0-2.9 1.4-5.2 4.3-6.8 2.9-1.7 6.8-2.5 11.8-2.5 4.7 0 8.5 1 11.4 2.8 2.7 1.7 4.4 4 5 7h21.3V28.9z"/></svg>
-                        <span>TensorFlow</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#F89939" d="M63.634 0c-2.81 4.962-4.252 8.857-5.828 13.264-4.81 13.455-3.26 27.636 3.696 39.2l.243.39c.26.425.522.853.798 1.277l-.19-.249c-5.58-7.293-14.05-12.48-23.705-13.666C28.96 39.083 19.288 41.58 11.476 47.28c4.213 2.218 7.636 4.18 10.86 6.42 9.92 6.887 16.382 16.778 18.213 28.043.66 4.06.684 8.133.322 12.287-.002.023 2.422-4.39 3.526-6.577 5.42-10.742 6.8-22.107 4.238-33.696-.305-1.38-.66-2.747-1.072-4.136 1.755 1.838 3.386 3.654 4.75 5.665 8.92 13.154 11.91 27.536 8.207 42.823-.084.347-.172.693-.266 1.04l.086-.133c7.13-11.244 9.996-23.456 7.826-36.566-1.49-8.997-5.495-17.104-11.273-24.4-.467-.59-.944-1.172-1.435-1.75 1.096.293 2.16.594 3.19.946 14.37 4.9 25.16 14.23 31.987 27.998 1.203 2.423 2.18 4.957 3.21 7.588-.258-4.244-.623-8.293-1.245-12.307-2.19-14.14-8.504-26.097-19.27-35.63C69.38 21.83 66.53 19.78 63.634 0z"/></svg>
-                        <span>Scikit-learn</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#4DABCF" d="M62.002 3.43L4.383 36.717v66.572l57.619 33.289L119.621 103.29V36.717zm0 10.67l49.143 28.39v56.78L62.002 127.66 12.86 99.27v-56.78z"/><path fill="#4DABCF" d="M62.002 47.158L37.86 61.103v27.89l24.142 13.946 24.143-13.946v-27.89zm0 10.668l15.666 9.047v18.097l-15.666 9.047-15.667-9.047V66.873z"/></svg>
-                        <span>Numpy</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 128 128" width="22" height="22"><path fill="#130654" d="M1.764 48.96h6.4v39.84h-6.4z"/><path fill="#E70488" d="M18.564 48.96h6.4v39.84h-6.4z"/><path fill="#130654" d="M35.364 38.56h6.4v50.24h-6.4zM52.164 28.16h6.4v60.64h-6.4z"/><path fill="#FFCA00" d="M68.964 48.96h6.4v39.84h-6.4z"/><path fill="#E70488" d="M85.764 28.16h6.4v60.64h-6.4z"/><path fill="#130654" d="M102.564 38.56h6.4v50.24h-6.4z"/><path fill="#FFCA00" d="M119.364 48.96h6.4v39.84h-6.4z"/></svg>
-                        <span>Pandas</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#76B7B2" d="M4 4c-1 2-2 5-2 8s.5 6 2 9"/><path fill="#EDC948" d="M8 5c-.8 2-1.5 4.5-1.5 7.5S7.2 18 8 20"/><path fill="#E15759" d="M12 6c-.5 1.5-1 3.5-1 6s.5 4.5 1 6.5"/><path fill="#4E79A7" d="M16 5c.8 2 1.5 4.5 1.5 7.5S16.8 18 16 20"/><path fill="#59A14F" d="M20 4c1 2 2 5 2 8s-.5 6-2 9"/></svg>
-                        <span>Seaborn</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#11557C" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><text x="5" y="16" fill="white" font-size="9" font-weight="bold" font-family="sans-serif">Mpl</text></svg>
-                        <span>Matplotlib</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#F05032" d="M23.55 11.03L12.97.45a1.53 1.53 0 0 0-2.17 0L8.65 2.6l2.74 2.74a1.82 1.82 0 0 1 2.3 2.32l2.64 2.64a1.82 1.82 0 1 1-1.09 1.03l-2.46-2.46v6.47a1.82 1.82 0 1 1-1.5-.08V8.69a1.82 1.82 0 0 1-.99-2.39L7.57 3.58.45 10.7a1.53 1.53 0 0 0 0 2.17l10.58 10.58a1.53 1.53 0 0 0 2.17 0l10.35-10.35a1.53 1.53 0 0 0 0-2.17z"/></svg>
-                        <span>Git</span>
-                    </div>                    <div class="skill-pill">
-                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#FFF" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                        <span>Github</span>
-                    </div>
-                </div>
-            </div>
-        </div>    </section>
-    <!-- Projects Section -->
-    <section class="section projects" id="projects">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag-badge">PORTFOLIO</span>
-                <h2 class="section-title">Featured Work &amp; Case Studies</h2>
-                <p class="section-subtitle">Data science models, analytics dashboards, and predictive systems</p>
-            </div>
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="analytics">Analytics</button>
-                <button class="filter-btn" data-filter="ml">Machine Learning</button>
-                <button class="filter-btn" data-filter="viz">Visualization</button>
-            </div>
-            <div class="projects-grid">
-                <!-- Project 1: Gesture Controlled Media Player -->
-                <article class="project-card" data-category="ml">
-                    <div class="project-image">
-                        <div class="project-image-placeholder" style="--placeholder-hue: 320">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-                            <span>Gesture &amp; Computer Vision</span>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://github.com/Khushalpsai/gesture-controlled-media-player" target="_blank" class="project-link">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                                Source Code
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tags">
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">MediaPipe</span>
-                            <span class="project-tag">OpenCV</span>
-                            <span class="project-tag">Computer Vision</span>
-                        </div>
-                        <h3 class="project-title">Gesture Controlled Media Player</h3>
-                        <p class="project-description">
-                            Control your media player using hand gestures — no keyboard, no mouse, just your hand in front of a webcam.
-                            Built with Python, MediaPipe, and OpenCV. Uses real-time hand landmark detection with debounce &amp; stability filtering to trigger system-wide media keys via pyautogui.
-                        </p>
-                    </div>
-                </article>
-
-                
-
-                <!-- Project 2: RAT (Remote Audit Tool) -->
-                <article class="project-card" data-category="analytics">
-                    <div class="project-image">
-                        <div class="project-image-placeholder" style="--placeholder-hue: 160">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                            <span>Forensics &amp; Auditing</span>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://github.com/Khushalpsai" target="_blank" class="project-link">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                                Source Code
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tags">
-                            <span class="project-tag">PowerShell</span>
-                            <span class="project-tag">Raspberry Pi</span>
-                            <span class="project-tag">System Auditing</span>
-                            <span class="project-tag">Forensics</span>
-                        </div>
-                        <h3 class="project-title">RAT (Remote Audit Tool)</h3>
-                        <p class="project-description">
-                            Built a portable forensic auditing tool using PowerShell and Raspberry Pi USB Gadget technology. 
-                            Automates system, network, USB, and login history collection with zero-dependency HTML reports.
-                        </p>
-                    </div>
-                </article>
-
-                <!-- Project 3: Checkstyle Open Source -->
-                <article class="project-card" data-category="analytics">
-                    <div class="project-image">
-                        <div class="project-image-placeholder" style="--placeholder-hue: 280">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                            <span>Open Source (GSoC 2026)</span>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://github.com/Khushalpsai" target="_blank" class="project-link">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                                View Contributions
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tags">
-                            <span class="project-tag">Java</span>
-                            <span class="project-tag">GSoC 2026</span>
-                            <span class="project-tag">Git / GitHub</span>
-                            <span class="project-tag">Static Analysis</span>
-                        </div>
-                        <h3 class="project-title">Checkstyle Open Source Contribution</h3>
-                        <p class="project-description">
-                            Merged 4 Pull Requests into Checkstyle Java code quality tool adhering to Google Java Style Guides. 
-                            Participated in Google Summer of Code 2026 working on core AST checks and codebase workflows.
-                        </p>
-                    </div>
-                </article>
-
-                <!-- Project 4: Cloud & Data Analytics -->
-                <article class="project-card" data-category="viz">
-                    <div class="project-image">
-                        <div class="project-image-placeholder" style="--placeholder-hue: 40">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
-                            <span>Data Analysis &amp; GCP</span>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://github.com/Khushalpsai" target="_blank" class="project-link">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                                Source Code
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tags">
-                            <span class="project-tag">GCP</span>
-                            <span class="project-tag">NumPy</span>
-                            <span class="project-tag">Pandas</span>
-                            <span class="project-tag">Matplotlib</span>
-                            <span class="project-tag">Seaborn</span>
-                        </div>
-                        <h3 class="project-title">Cloud &amp; Exploratory Data Analytics</h3>
-                        <p class="project-description">
-                            Exploratory data analysis workflows and cloud system implementations on GCP, 
-                            featuring data manipulation with Pandas &amp; NumPy and statistical visualizations with Seaborn.
-                        </p>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag-badge">GET IN TOUCH</span>
-                <h2 class="section-title">Let's Connect</h2>
-                <p class="section-subtitle">Open for data analytics, machine learning projects, and collaborations</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3 class="contact-heading">Let's work together</h3>
-                    <p class="contact-text">
-                        I'm always interested in hearing about new projects and opportunities.
-                        Whether you have a question or just want to say hi, feel free to reach out!
-                    </p>
-                    <div class="contact-methods">
-                        <a href="mailto:khushalpsai@gmail.com" class="contact-method" id="contactEmail">
-                            <div class="method-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            </div>
-                            <div>
-                                <span class="method-label">Email</span>
-                                <span class="method-value">khushalpsai@gmail.com</span>
-                            </div>
-                        </a>
-                        <a href="#" class="contact-method" id="contactLocation">
-                            <div class="method-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            </div>
-                            <div>
-                                <span class="method-label">Location</span>
-                                <span class="method-value">Bangalore, India</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://github.com/Khushalpsai" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub" id="socialGithub">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/sai-khushal-477365318/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn" id="socialLinkedin">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                        </a>
-                    </div>
-                </div>
-                <form class="contact-form" id="contactForm">
-                    <input type="hidden" name="access_key" value="afc661bf-73d6-4c8a-bb11-9bb525bf1e88">
-                    <input type="hidden" name="subject" value="New Portfolio Contact Message">
-                    <input type="hidden" name="from_name" value="Portfolio Website">
-                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                    <div class="form-group">
-                        <label for="formName" class="form-label">Your Name</label>
-                        <input type="text" id="formName" name="name" class="form-input" placeholder="John Doe" required>
-                        <div class="form-line"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="formEmail" class="form-label">Your Email</label>
-                        <input type="email" id="formEmail" name="email" class="form-input" placeholder="john@example.com" required>
-                        <div class="form-line"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="formSubject" class="form-label">Subject</label>
-                        <input type="text" id="formSubject" name="subject" class="form-input" placeholder="Project Collaboration" required>
-                        <div class="form-line"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="formMessage" class="form-label">Message</label>
-                        <textarea id="formMessage" name="message" class="form-input form-textarea" placeholder="Tell me about your project..." rows="5" required></textarea>
-                        <div class="form-line"></div>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-submit" id="formSubmit">
-                        <span class="btn-text">Send Message</span>
-                        <span class="btn-loader">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-                        </span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                    </button>
-                    <div class="form-status" id="formStatus"></div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="#hero" class="nav-logo">
-                        <span class="logo-bracket">&lt;</span>SK<span class="logo-bracket">/&gt;</span>
-                    </a>
-                    <p class="footer-tagline">Turning data into decisions, one model at a time.</p>
-                </div>
-                <div class="footer-links">
-                    <a href="#hero">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> Sai Khushal. Crafted with ❤️ and lots of ☕</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to top -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
-    </button>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
