@@ -504,6 +504,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 
 
+
 // ===== 3D PROJECT CARDS =====
 function initProjectCards() {
     const cards = document.querySelectorAll('.project-card');
@@ -533,7 +534,6 @@ function initProjectCards() {
     });
 }
 
-
 // ===== NEON GRID CANVAS =====
 function initNeonGrid() {
     const canvas = document.getElementById('neon-grid');
@@ -551,81 +551,61 @@ function initNeonGrid() {
     window.addEventListener('resize', resize);
     resize();
     
-    // Grid variables
-    let speed = 2.0;
-    let gridOffset = 0;
+    // Scattered perspective lines (light streaks)
+    const lines = [];
+    const numLines = 80; // reduced count for performance and cleaner look
+    
+    for(let i=0; i<numLines; i++) {
+        lines.push({
+            x: (Math.random() - 0.5) * 3000,
+            y: (Math.random() - 0.5) * 3000,
+            z: Math.random() * 2000,
+            color: Math.random() > 0.5 ? 'rgba(0, 240, 255' : 'rgba(217, 0, 255' // Cyan or Purple
+        });
+    }
+    
+    const fov = 400;
+    let speed = 2.5; // Calmer speed
     
     function draw() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 1)'; // Deep black background
+        ctx.fillStyle = 'rgba(0, 0, 0, 1)'; // Perfectly black background
         ctx.fillRect(0, 0, width, height);
         
-        gridOffset += speed;
-        if (gridOffset > 40) {
-            gridOffset = 0;
-        }
+        const centerX = width / 2;
+        const centerY = height / 2;
         
-        const horizon = height * 0.4; // 40% down the screen
-        const fov = 300;
+        ctx.lineWidth = 1.5;
         
-        ctx.strokeStyle = '#d900ff'; // Neon purple horizontal lines
-        ctx.lineWidth = 1;
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = '#d900ff';
-        
-        // Draw horizontal lines moving forward
-        for (let z = 10 + gridOffset; z < 800; z += 40) {
-            // Perspective projection
-            let y = horizon + (height * 0.6 * fov) / z;
+        for (let i = 0; i < numLines; i++) {
+            let line = lines[i];
             
-            // Wavy effect based on z depth and time
-            let waveOffset = Math.sin((z + gridOffset * 10) * 0.01) * 20 * (fov / z);
-            y += waveOffset;
+            line.z -= speed;
             
-            if (y > horizon && y < height) {
-                // Fade out in distance
-                let alpha = 1 - (z / 800);
-                if(alpha < 0) alpha = 0;
-                
-                ctx.beginPath();
-                ctx.strokeStyle = `rgba(217, 0, 255, ${alpha})`;
-                ctx.moveTo(0, y);
-                // Draw wavy line across screen
-                for(let x=0; x<=width; x+=100) {
-                    let w = Math.cos((x * 0.01) + (gridOffset * 0.1)) * 10;
-                    ctx.lineTo(x, y + w);
-                }
-                ctx.lineTo(width, y);
-                ctx.stroke();
+            if (line.z <= 0) {
+                line.z = 2000;
+                line.x = (Math.random() - 0.5) * 3000;
+                line.y = (Math.random() - 0.5) * 3000;
             }
-        }
-        
-        // Draw vertical lines (perspective converging)
-        ctx.strokeStyle = '#00f0ff'; // Neon cyan vertical lines
-        ctx.shadowColor = '#00f0ff';
-        const numLines = 20;
-        for (let i = -numLines; i <= numLines; i++) {
-            let xPos = (width / 2) + (i * 100);
+            
+            let x = centerX + (line.x * fov) / line.z;
+            let y = centerY + (line.y * fov) / line.z;
+            
+            // Draw a streak from the past position to current
+            let tailZ = line.z + 150; 
+            
+            let tx = centerX + (line.x * fov) / tailZ;
+            let ty = centerY + (line.y * fov) / tailZ;
+            
+            // Fade based on depth
+            let alpha = 1 - (line.z / 2000);
+            if (alpha < 0) alpha = 0;
             
             ctx.beginPath();
-            let startAlpha = 0;
-            // Trace from bottom to horizon
-            for (let z = 10; z < 800; z += 20) {
-                let x = (width / 2) + ((xPos - width / 2) * fov) / z;
-                let y = horizon + (height * 0.6 * fov) / z;
-                let waveOffset = Math.sin(z * 0.01) * 20 * (fov / z);
-                let xWave = Math.cos((x * 0.01) + (gridOffset * 0.1)) * 10;
-                
-                if (z === 10) {
-                    ctx.moveTo(x, y + waveOffset + xWave);
-                } else {
-                    ctx.lineTo(x, y + waveOffset + xWave);
-                }
-            }
-            // Use gradient for vertical lines to fade into horizon
-            const grad = ctx.createLinearGradient(0, height, 0, horizon);
-            grad.addColorStop(0, 'rgba(0, 240, 255, 0.8)');
-            grad.addColorStop(1, 'rgba(0, 240, 255, 0)');
-            ctx.strokeStyle = grad;
+            ctx.strokeStyle = `${line.color}, ${alpha})`;
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = line.color + ', 1)';
+            ctx.moveTo(tx, ty);
+            ctx.lineTo(x, y);
             ctx.stroke();
         }
         

@@ -22,8 +22,8 @@
     --border-color: rgba(255, 255, 255, 0.1);
     --border-hover: rgba(0, 240, 255, 0.5);
     
-    --gradient-primary: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    --gradient-accent: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+    --gradient-primary: var(--accent-primary);
+    --gradient-accent: var(--accent-secondary);
     --gradient-card: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
     
     /* Spacing */
@@ -206,7 +206,8 @@ body:hover .cursor-dot {
 .section-title {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 800;
-    background: var(--gradient-primary);
+    background: var(--accent-primary);
+    color: #000;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -715,7 +716,8 @@ body:hover .cursor-dot {
 }
 
 .btn-primary {
-    background: var(--gradient-primary);
+    background: var(--accent-primary);
+    color: #000;
     color: #fff;
     box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
 }
@@ -971,7 +973,8 @@ body:hover .cursor-dot {
 
 .filter-btn.active {
     color: #fff;
-    background: var(--gradient-primary);
+    background: var(--accent-primary);
+    color: #000;
     border-color: transparent;
     box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
 }
