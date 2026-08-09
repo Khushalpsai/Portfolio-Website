@@ -71,8 +71,14 @@ body {
     color: var(--text-primary);
     line-height: 1.7;
     overflow-x: hidden;
+    cursor: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide default cursor on interactive elements as well */
+a, button, input, textarea, select, .term-btn, .skill-pill, .nav-logo {
+    cursor: none !important;
 }
 
 ::selection {
