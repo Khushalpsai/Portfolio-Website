@@ -105,24 +105,43 @@ input, textarea {
 }
 
 /* ============================================
-   CURSOR GLOW
+   CURSOR GLOW & DOT
    ============================================ */
 .cursor-glow {
     position: fixed;
-    width: 600px;
-    height: 600px;
+    width: 800px;
+    height: 800px;
     border-radius: 50%;
     pointer-events: none;
     z-index: 1;
-    background: radial-gradient(circle, rgba(108, 92, 231, 0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(88, 166, 255, 0.08) 0%, rgba(108, 92, 231, 0.04) 40%, transparent 70%);
     transform: translate(-50%, -50%);
-    transition: opacity 0.3s;
+    transition: opacity 0.4s;
     opacity: 0;
 }
 
 body:hover .cursor-glow {
     opacity: 1;
 }
+
+.cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.15s;
+    box-shadow: 0 0 12px rgba(88, 166, 255, 0.6), 0 0 24px rgba(88, 166, 255, 0.3);
+}
+
+body:hover .cursor-dot {
+    opacity: 1;
+}
+
 
 /* ============================================
    PARTICLE CANVAS
@@ -825,129 +844,85 @@ body:hover .cursor-glow {
 }
 
 /* ============================================
-   SKILLS SECTION
+   SKILLS SECTION - MARQUEE
    ============================================ */
-.skills-categories {
+.skills-marquee-container {
     display: flex;
     flex-direction: column;
-    gap: 48px;
+    gap: 20px;
+    overflow: hidden;
+    padding: 10px 0;
 }
 
-.skill-category {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 32px;
-    transition: border-color var(--transition-base);
+.skills-marquee-row {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
-.skill-category:hover {
-    border-color: var(--border-hover);
+.skills-marquee-row:hover .skills-marquee-track {
+    animation-play-state: paused;
 }
 
-.category-header {
+.skills-marquee-track {
     display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 28px;
-}
-
-.category-icon {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(108, 92, 231, 0.1);
-    border-radius: var(--radius-sm);
-    color: var(--accent-primary);
-}
-
-.category-header h3 {
-    font-size: 1.2rem;
-    font-weight: 700;
-}
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 16px;
+    width: max-content;
+    will-change: transform;
 }
 
-.skill-card {
-    display: flex;
-    flex-direction: column;
+.skills-marquee-track.marquee-right {
+    animation: marquee-scroll-right 30s linear infinite;
+}
+
+.skills-marquee-track.marquee-left {
+    animation: marquee-scroll-left 30s linear infinite;
+}
+
+@keyframes marquee-scroll-right {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-scroll-left {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+.skill-pill {
+    display: inline-flex;
     align-items: center;
-    gap: 12px;
-    padding: 24px 16px;
-    background: var(--bg-tertiary);
+    gap: 10px;
+    padding: 12px 24px;
+    background: rgba(22, 27, 34, 0.8);
     border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    transition: all var(--transition-base);
-    position: relative;
-    overflow: hidden;
+    border-radius: 50px;
+    white-space: nowrap;
+    cursor: default;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    flex-shrink: 0;
 }
 
-.skill-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--gradient-primary);
-    transform: scaleX(0);
-    transition: transform var(--transition-base);
+.skill-pill:hover {
+    transform: scale(1.12) translateY(-4px);
+    border-color: var(--accent-primary);
+    background: rgba(88, 166, 255, 0.1);
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.2), 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
-.skill-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(108, 92, 231, 0.3);
-    box-shadow: var(--shadow-md);
+.skill-pill svg {
+    flex-shrink: 0;
 }
 
-.skill-card:hover::before {
-    transform: scaleX(1);
-}
-
-.skill-icon {
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-}
-
-.react-icon {
-    font-size: 2.2rem;
-}
-
-.skill-name {
+.skill-pill span {
+    font-size: 0.9rem;
     font-weight: 600;
-    font-size: 0.95rem;
     color: var(--text-primary);
+    letter-spacing: 0.3px;
 }
 
-.skill-bar {
-    width: 100%;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 2px;
-    overflow: hidden;
-}
-
-.skill-progress {
-    height: 100%;
-    background: var(--gradient-primary);
-    border-radius: 2px;
-    width: 0;
-    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.skill-card.animate .skill-progress {
-    width: var(--progress);
-}
 
 /* ============================================
    PROJECTS SECTION
@@ -1488,12 +1463,13 @@ body:hover .cursor-glow {
         grid-template-columns: 1fr;
     }
     
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
     .about-info-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .cursor-glow,
+    .cursor-dot {
+        display: none;
     }
     
     .scroll-indicator {
@@ -1523,12 +1499,13 @@ body:hover .cursor-glow {
         padding: 24px;
     }
     
-    .skill-category {
-        padding: 20px;
+    .skill-pill {
+        padding: 8px 16px;
+        font-size: 0.8rem;
     }
     
-    .skills-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
+    .skill-pill svg {
+        width: 18px;
+        height: 18px;
     }
 }

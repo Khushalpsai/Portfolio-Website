@@ -14,9 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== Scroll Animations =====
     initScrollAnimations();
     
-    // ===== Skill Bars =====
-    initSkillBars();
-    
+
     // ===== Project Filters =====
     initProjectFilters();
     
@@ -162,20 +160,26 @@ function initTerminalDeck() {
     });
 }
 
-// ===== CURSOR GLOW =====
+// ===== CURSOR GLOW & DOT =====
 function initCursorGlow() {
     const glow = document.getElementById('cursorGlow');
+    const dot = document.getElementById('cursorDot');
     let mouseX = 0, mouseY = 0;
     let glowX = 0, glowY = 0;
     
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
+        // Cursor dot follows with near-zero latency
+        if (dot) {
+            dot.style.left = mouseX + 'px';
+            dot.style.top = mouseY + 'px';
+        }
     });
     
     function updateGlow() {
-        glowX += (mouseX - glowX) * 0.08;
-        glowY += (mouseY - glowY) * 0.08;
+        glowX += (mouseX - glowX) * 0.06;
+        glowY += (mouseY - glowY) * 0.06;
         glow.style.left = glowX + 'px';
         glow.style.top = glowY + 'px';
         requestAnimationFrame(updateGlow);
@@ -343,7 +347,7 @@ function initStatsCounter() {
 function initScrollAnimations() {
     // Add reveal class to elements
     const revealElements = document.querySelectorAll(
-        '.section-header, .about-grid, .skill-category, .project-card, .contact-grid'
+        '.section-header, .about-grid, .skills-marquee-container, .project-card, .contact-grid'
     );
     
     revealElements.forEach(el => el.classList.add('reveal'));
@@ -362,31 +366,7 @@ function initScrollAnimations() {
     revealElements.forEach(el => observer.observe(el));
 }
 
-// ===== SKILL BARS =====
-function initSkillBars() {
-    const skillCards = document.querySelectorAll('.skill-card');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Stagger the animation
-                const cards = entry.target.closest('.skills-grid').querySelectorAll('.skill-card');
-                cards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.classList.add('animate');
-                    }, index * 100);
-                });
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.3 });
-    
-    // Observe first card in each grid
-    document.querySelectorAll('.skills-grid').forEach(grid => {
-        const firstCard = grid.querySelector('.skill-card');
-        if (firstCard) observer.observe(firstCard);
-    });
-}
+
 
 // ===== PROJECT FILTERS =====
 function initProjectFilters() {
