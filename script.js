@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackground();
   initCursor();
   initNavigation();
+  initHeroTypewriter();
   initScrollReveal();
   initProjectCards();
   initProjectFilters();
@@ -318,3 +319,166 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     }
   });
 });
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+function initScrollReveal() {
+  const els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('active'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+  els.forEach(el => io.observe(el));
+}
+
+/* ============================================================
+   PROJECT CARDS — 3D tilt + spotlight
+   ============================================================ */
+function initProjectCards() {
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r  = card.getBoundingClientRect();
+      const x  = e.clientX - r.left, y = e.clientY - r.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+      const rx = ((y - r.height/2) / r.height * 2) * -4;
+      const ry = ((x - r.width/2)  / r.width  * 2) *  4;
+      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.015,1.015,1.015)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(900px) rotateX(0) rotateY(0) scale3d(1,1,1)';
+    });
+  });
+}
+
+/* ============================================================
+   PROJECT FILTERS
+   ============================================================ */
+function initProjectFilters() {
+  const btns  = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.project-card');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(card => {
+        const show = f === 'all' || card.dataset.category === f;
+        if (show) {
+          card.style.display = '';
+          requestAnimationFrame(() => { card.style.opacity = '1'; card.style.transform = ''; });
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.94)';
+          setTimeout(() => { if (card.style.opacity === '0') card.style.display = 'none'; }, 280);
+        }
+      });
+    });
+  });
+}
+
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+function initContactForm() {
+  const form   = document.getElementById('contactForm');
+  const submit = document.getElementById('formSubmit');
+  const status = document.getElementById('formStatus');
+  if (!form) return;
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    submit.classList.add('loading'); submit.disabled = true;
+    try {
+      const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) });
+      const data = await res.json();
+      if (data.success) { showStatus('success', '✓ Message sent! I\'ll get back to you soon.'); form.reset(); }
+      else showStatus('error', '✕ Something went wrong. Please try again.');
+    } catch { showStatus('error', '✕ Network error. Please email me directly.'); }
+    finally   { submit.classList.remove('loading'); submit.disabled = false; }
+  });
+  function showStatus(type, msg) {
+    status.className = `form-status ${type}`; status.textContent = msg;
+    setTimeout(() => { status.className = 'form-status'; }, 6000);
+  }
+  document.querySelectorAll('.form-input').forEach(input => {
+    input.addEventListener('focus', () => input.closest('.form-group').classList.add('focused'));
+    input.addEventListener('blur',  () => input.closest('.form-group').classList.remove('focused'));
+  });
+}
+
+/* ============================================================
+   BACK TO TOP
+   ============================================================ */
+function initBackToTop() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+  window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 500), { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+/* ============================================================
+   SMOOTH ANCHOR SCROLL
+   ============================================================ */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id && id.length > 1) {
+      const t = document.querySelector(id);
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    }
+  });
+});
+
+/* ============================================================
+   HERO TYPEWRITER — fun rotating descriptors
+   ============================================================ */
+function initHeroTypewriter() {
+  const el = document.getElementById('heroRoleText');
+  if (!el) return;
+
+  const roles = [
+    'builder, not just a learner',
+    'debugger of life choices',
+    'Python enthusiast (it\'s a feature)',
+    'ML tinkerer',
+    'open source contributor',
+    'breaker & fixer of things',
+    'GSoC 2026 participant',
+    'data nerd with a keyboard',
+    'bug creator (and solver)',
+  ];
+
+  let ri = 0, ci = 0, deleting = false, pauseTimer = null;
+
+  const TYPING_SPEED   = 55;
+  const DELETING_SPEED = 28;
+  const PAUSE_END      = 1800;
+  const PAUSE_START    = 320;
+
+  function tick() {
+    const current = roles[ri];
+    if (!deleting) {
+      el.textContent = current.slice(0, ci + 1);
+      ci++;
+      if (ci === current.length) {
+        deleting = true;
+        pauseTimer = setTimeout(tick, PAUSE_END);
+        return;
+      }
+      setTimeout(tick, TYPING_SPEED);
+    } else {
+      el.textContent = current.slice(0, ci - 1);
+      ci--;
+      if (ci === 0) {
+        deleting = false;
+        ri = (ri + 1) % roles.length;
+        setTimeout(tick, PAUSE_START);
+        return;
+      }
+      setTimeout(tick, DELETING_SPEED);
+    }
+  }
+
+  setTimeout(tick, 900);
+}

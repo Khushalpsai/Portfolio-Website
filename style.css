@@ -1193,3 +1193,120 @@ body:hover .cursor-dot { opacity: 1; }
 
   .section-header { margin-bottom: 52px; }
 }
+
+/* ============================================================
+   HERO — fun roles typewriter line
+   ============================================================ */
+.hero-roles-line {
+  display: block;
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  font-weight: 500;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  margin-top: 10px;
+  letter-spacing: 0.01em;
+  min-height: 1.6em;
+  animation: fadeUp 0.7s var(--ease-out-expo) 0.16s both;
+}
+
+.hero-role-prefix {
+  color: var(--text-3);
+}
+
+.hero-role-text {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hero-role-cursor {
+  color: var(--accent);
+  font-weight: 300;
+  animation: blink 0.9s step-end infinite;
+  margin-left: 1px;
+}
+
+/* ============================================================
+   ABOUT — large rectangular photo card
+   ============================================================ */
+.about-photo-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.about-photo-wrap {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-accent);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 20px 60px rgba(0,0,0,0.6),
+    0 6px 20px rgba(0,0,0,0.4);
+  transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s;
+}
+
+.about-photo-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 55%,
+    rgba(9,9,11,0.65) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.about-photo-card:hover .about-photo-wrap {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 0 1px rgba(125,147,168,0.25),
+    0 28px 72px rgba(0,0,0,0.65),
+    0 10px 28px rgba(0,0,0,0.45);
+}
+
+.about-photo-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: inherit;
+}
+
+.about-photo-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 14px 0 4px;
+}
+
+.about-photo-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-1);
+  letter-spacing: -0.01em;
+}
+
+.about-photo-uni {
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+}
+
+/* Responsive — stack about grid on mobile */
+@media (max-width: 968px) {
+  .about-photo-card {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .about-photo-img {
+    max-height: 360px;
+  }
+}
