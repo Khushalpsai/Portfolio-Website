@@ -431,54 +431,44 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 /* ============================================================
-   HERO TYPEWRITER — fun rotating descriptors
+   HERO TYPEWRITER — professional roles
    ============================================================ */
 function initHeroTypewriter() {
   const el = document.getElementById('heroRoleText');
   if (!el) return;
 
   const roles = [
-    'builder, not just a learner',
-    'debugger of life choices',
-    'Python enthusiast (it\'s a feature)',
-    'ML tinkerer',
-    'open source contributor',
-    'breaker & fixer of things',
-    'GSoC 2026 participant',
-    'data nerd with a keyboard',
-    'bug creator (and solver)',
+    'AI/ML Engineer',
+    'Data Analyst',
+    'Data Scientist',
+    'Backend Developer',
+    'Open Source Contributor',
+    'Computer Vision Engineer',
+    'Python Developer',
+    'GSoC 2026 Participant',
   ];
 
-  let ri = 0, ci = 0, deleting = false, pauseTimer = null;
+  let ri = 0, ci = 0, deleting = false;
 
-  const TYPING_SPEED   = 55;
-  const DELETING_SPEED = 28;
-  const PAUSE_END      = 1800;
-  const PAUSE_START    = 320;
+  const TYPE_SPEED   = 60;
+  const DELETE_SPEED = 30;
+  const PAUSE_END    = 1800;
+  const PAUSE_NEXT   = 280;
 
   function tick() {
     const current = roles[ri];
     if (!deleting) {
       el.textContent = current.slice(0, ci + 1);
       ci++;
-      if (ci === current.length) {
-        deleting = true;
-        pauseTimer = setTimeout(tick, PAUSE_END);
-        return;
-      }
-      setTimeout(tick, TYPING_SPEED);
+      if (ci === current.length) { deleting = true; setTimeout(tick, PAUSE_END); return; }
+      setTimeout(tick, TYPE_SPEED);
     } else {
       el.textContent = current.slice(0, ci - 1);
       ci--;
-      if (ci === 0) {
-        deleting = false;
-        ri = (ri + 1) % roles.length;
-        setTimeout(tick, PAUSE_START);
-        return;
-      }
-      setTimeout(tick, DELETING_SPEED);
+      if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; setTimeout(tick, PAUSE_NEXT); return; }
+      setTimeout(tick, DELETE_SPEED);
     }
   }
 
-  setTimeout(tick, 900);
+  setTimeout(tick, 800);
 }

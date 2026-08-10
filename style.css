@@ -307,7 +307,6 @@ body:hover .cursor-dot { opacity: 1; }
   max-width: 520px;
   animation: fadeUp 0.7s var(--ease-out-expo) 0.2s both;
 }
-
 .hero-cta {
   display: flex;
   gap: 14px;
@@ -1308,5 +1307,56 @@ body:hover .cursor-dot { opacity: 1; }
   }
   .about-photo-img {
     max-height: 360px;
+  }
+}
+
+/* ============================================================
+   HERO — professional role typewriter (replaces fun line)
+   ============================================================ */
+.hero-role-line {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  font-weight: 500;
+  color: var(--text-2);
+  font-family: var(--font-mono);
+  margin-top: 8px;
+  margin-bottom: 28px;
+  min-height: 1.7em;
+  animation: fadeUp 0.7s var(--ease-out-expo) 0.16s both;
+  letter-spacing: 0.01em;
+}
+
+.hero-role-prefix {
+  color: var(--text-3);
+  flex-shrink: 0;
+}
+
+.hero-role-text {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.hero-role-cursor {
+  color: var(--accent);
+  font-weight: 300;
+  margin-left: 2px;
+  animation: blink 0.85s step-end infinite;
+}
+
+/* ============================================================
+   ABOUT — single column when photo removed
+   ============================================================ */
+.about-grid--single {
+  grid-template-columns: 1fr !important;
+  max-width: 760px;
+  margin: 0 auto;
+  gap: 0 !important;
+}
+
+@media (max-width: 968px) {
+  .hero-role-line {
+    justify-content: center;
   }
 }
