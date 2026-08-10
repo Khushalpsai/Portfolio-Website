@@ -136,6 +136,28 @@
           </a>
         </div>
       </div>
+
+      <!-- ===== ABOUT GAME ===== -->
+      <div class="about-game reveal" id="aboutGame" aria-label="Fun quiz about Khushal">
+        <div class="game-header">
+          <span class="game-label">// mini_quiz.exe</span>
+          <span class="game-score" id="gameScore" aria-live="polite">Score: <strong id="gameScoreVal">0</strong> / <strong id="gameTotalVal">5</strong></span>
+        </div>
+        <div class="game-question-wrap" id="gameQuestionWrap">
+          <p class="game-q-num" id="gameQNum">Question 1 of 5</p>
+          <p class="game-q-text" id="gameQText"></p>
+          <div class="game-options" id="gameOptions"></div>
+          <p class="game-feedback" id="gameFeedback" aria-live="polite"></p>
+        </div>
+        <div class="game-result" id="gameResult" hidden>
+          <div class="game-result-score" id="gameResultScore"></div>
+          <p class="game-result-msg"  id="gameResultMsg"></p>
+          <button class="btn btn-outline game-restart-btn" id="gameRestart">Play Again</button>
+        </div>
+        <div class="game-progress">
+          <div class="game-progress-bar" id="gameProgressBar" style="width:0%"></div>
+        </div>
+      </div>
     </div>
   </section>
 
