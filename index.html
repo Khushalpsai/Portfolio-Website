@@ -12,7 +12,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="neon-grid"></canvas>
+  <!-- React Bits Antigravity Background -->
+  <div id="antigravity-bg" class="antigravity-bg" aria-hidden="true">
+    <canvas id="antigravity-canvas" class="antigravity-canvas"></canvas>
+  </div>
 
   <!-- Custom cursor -->
   <div class="cursor-glow" id="cursorGlow"></div>
@@ -550,6 +553,7 @@
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
+  <script src="antigravity.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

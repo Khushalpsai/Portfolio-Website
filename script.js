@@ -14,17 +14,39 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ============================================================
-   BACKGROUND — ambient drifting stars
+   BACKGROUND — React Bits: Antigravity WebGL2 Particle Field
    ============================================================ */
 function initBackground() {
-  const canvas = document.getElementById('neon-grid');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
+  const container = document.getElementById('antigravity-bg');
+  if (container && window.Antigravity) {
+    const instance = window.Antigravity.create(container, {
+      colors: ['#5227FF', '#FF9FFC', '#B497CF'],
+      colorMode: 'conic',
+      particleShape: 'capsule',
+      particleSize: 1.1,
+      ringRadius: 7.5,
+      magnetRadius: 9.5,
+      waveSpeed: 0.45,
+      waveAmplitude: 1,
+      lerpSpeed: 0.06,
+      clickBurst: true,
+      autoAnimate: true,
+      ambient: 0.28,
+      opacity: 0.95
+    });
+    if (instance) return;
+  }
+
+  // Graceful fallback: 2D drifting ambient particles if WebGL2 is unavailable
+  const fallbackCanvas = document.getElementById('antigravity-canvas') || document.getElementById('neon-grid');
+  if (!fallbackCanvas) return;
+  const ctx = fallbackCanvas.getContext('2d');
+  if (!ctx) return;
   let W, H, stars = [], raf;
 
   function resize() {
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
+    W = fallbackCanvas.width  = window.innerWidth;
+    H = fallbackCanvas.height = window.innerHeight;
   }
 
   function makeStar() {
