@@ -13,7 +13,7 @@
   const PIXEL_BUDGET = 2.4e6;
   const WORLD_HEIGHT = 31.5;
   const PALETTE_SIZE = 256;
-  const DEFAULT_COLORS = ['#5227FF', '#FF9FFC', '#B497CF'];
+  const DEFAULT_COLORS = ['#7d93a8', '#38bdf8', '#818cf8', '#64748b'];
   const SHAPES = { capsule: 0, sphere: 1, box: 2, tetrahedron: 3 };
   const COLOR_MODES = { conic: 0, radial: 1, random: 2 };
 
@@ -269,32 +269,32 @@ void main() {
     }
 
     const isMobile = window.innerWidth < 768;
-    const defaultCount = isMobile ? 650 : 1300;
+    const defaultCount = isMobile ? 180 : 360;
 
     const count = options.count ?? defaultCount;
-    const magnetRadius = options.magnetRadius ?? 9;
-    const ringRadius = options.ringRadius ?? 7.5;
-    const waveSpeed = options.waveSpeed ?? 0.4;
-    const waveAmplitude = options.waveAmplitude ?? 1;
-    const waveCount = options.waveCount ?? 3;
-    const particleSize = options.particleSize ?? 1.1;
-    const lerpSpeed = options.lerpSpeed ?? 0.06;
+    const magnetRadius = options.magnetRadius ?? 11.5;
+    const ringRadius = options.ringRadius ?? 10.5;
+    const waveSpeed = options.waveSpeed ?? 0.16;
+    const waveAmplitude = options.waveAmplitude ?? 0.32;
+    const waveCount = options.waveCount ?? 2;
+    const particleSize = options.particleSize ?? 0.6;
+    const lerpSpeed = options.lerpSpeed ?? 0.035;
     const colors = options.colors ?? DEFAULT_COLORS;
     const colorMode = options.colorMode ?? 'conic';
-    const colorSpeed = options.colorSpeed ?? 0.05;
+    const colorSpeed = options.colorSpeed ?? 0.04;
     const autoAnimate = options.autoAnimate ?? true;
-    const particleVariance = options.particleVariance ?? 1;
+    const particleVariance = options.particleVariance ?? 0.8;
     const rotationSpeed = options.rotationSpeed ?? 0;
     const depthFactor = options.depthFactor ?? 1;
-    const pulseSpeed = options.pulseSpeed ?? 3;
-    const particleShape = options.particleShape ?? 'capsule';
-    const fieldStrength = options.fieldStrength ?? 10;
-    const ambient = options.ambient ?? 0.28;
+    const pulseSpeed = options.pulseSpeed ?? 2;
+    const particleShape = options.particleShape ?? 'sphere';
+    const fieldStrength = options.fieldStrength ?? 7;
+    const ambient = options.ambient ?? 0.10;
     const interactive = options.interactive ?? true;
     const clickBurst = options.clickBurst ?? true;
     const intro = options.intro ?? true;
     const lightMode = options.lightMode ?? false;
-    const opacity = options.opacity ?? 0.95;
+    const opacity = options.opacity ?? 0.45;
     const maxDevicePixelRatio = options.maxDevicePixelRatio ?? 2;
 
     const palette = options.color ? [options.color] : Array.isArray(colors) && colors.length ? colors : DEFAULT_COLORS;
@@ -683,7 +683,7 @@ void main() {
     }
 
     function onPointerUp(e) {
-      if (pointer.down) burst(settings, 0.45 + charge);
+      if (pointer.down) burst(settings, 0.18 + charge * 0.2);
       pointer.down = false;
       if (e.pointerType !== 'mouse') pointer.inside = false;
     }

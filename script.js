@@ -20,19 +20,21 @@ function initBackground() {
   const container = document.getElementById('antigravity-bg');
   if (container && window.Antigravity) {
     const instance = window.Antigravity.create(container, {
-      colors: ['#5227FF', '#FF9FFC', '#B497CF'],
+      colors: ['#7d93a8', '#38bdf8', '#818cf8', '#64748b'],
       colorMode: 'conic',
-      particleShape: 'capsule',
-      particleSize: 1.1,
-      ringRadius: 7.5,
-      magnetRadius: 9.5,
-      waveSpeed: 0.45,
-      waveAmplitude: 1,
-      lerpSpeed: 0.06,
+      particleShape: 'sphere',
+      count: window.innerWidth < 768 ? 220 : 420,
+      particleSize: 0.65,
+      ringRadius: 10.5,
+      magnetRadius: 11.5,
+      waveSpeed: 0.16,
+      waveAmplitude: 0.32,
+      waveCount: 2,
+      lerpSpeed: 0.035,
       clickBurst: true,
       autoAnimate: true,
-      ambient: 0.28,
-      opacity: 0.95
+      ambient: 0.12,
+      opacity: 0.5
     });
     if (instance) return;
   }
