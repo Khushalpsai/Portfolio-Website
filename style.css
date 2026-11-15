@@ -336,7 +336,8 @@ body:hover .cursor-dot { opacity: 1; }
 }
 .hero-cta {
   display: flex;
-  gap: 14px;
+  align-items: center;
+  gap: 20px;
   margin-bottom: 56px;
   flex-wrap: wrap;
   animation: fadeUp 0.7s var(--ease-out-expo) 0.28s both;
@@ -507,6 +508,109 @@ body:hover .cursor-dot { opacity: 1; }
   border-color: rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.04);
   transform: translateY(-2px);
+}
+
+/* From Uiverse.io by karthik092726122003 */
+.styled-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.styled-wrapper .button {
+  display: block;
+  position: relative;
+  width: 76px;
+  height: 76px;
+  margin: 0;
+  overflow: hidden;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.styled-wrapper .button:before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  inset: 7px;
+  border: 3px solid rgba(255, 255, 255, 0.25); /* Updated dynamically for dark mode */
+  transition:
+    opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.styled-wrapper .button:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  inset: 7px;
+  border: 4px solid #599a53;
+  transform: scale(1.3);
+  transition:
+    opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+}
+
+.styled-wrapper .button:hover:before,
+.styled-wrapper .button:focus:before,
+.styled-wrapper:hover .button:before {
+  opacity: 0;
+  transform: scale(0.7);
+  transition:
+    opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.styled-wrapper .button:hover:after,
+.styled-wrapper .button:focus:after,
+.styled-wrapper:hover .button:after {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.styled-wrapper .button-box {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.styled-wrapper .button-elem {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 24px 18px 0 22px;
+  transform: rotate(360deg);
+  fill: #f0eeef;
+}
+
+.styled-wrapper .button:hover .button-box,
+.styled-wrapper .button:focus .button-box,
+.styled-wrapper:hover .button-box {
+  transition: 0.4s;
+  transform: translateX(-69px);
+}
+
+.styled-button-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-2);
+  letter-spacing: 0.02em;
+  transition: color 0.25s ease, transform 0.25s ease;
+  white-space: nowrap;
+}
+
+.styled-wrapper:hover .styled-button-label {
+  color: var(--text-1);
+  transform: translateX(2px);
 }
 
 /* ============================================
@@ -1229,6 +1333,7 @@ body:hover .cursor-dot { opacity: 1; }
 
   .hero-cta { flex-direction: column; }
   .btn { width: 100%; justify-content: center; }
+  .styled-wrapper { justify-content: center; width: 100%; margin-top: 6px; }
 
   .hero-photo-card { max-width: 240px; }
   .hero-photo-img { max-height: 320px; }
