@@ -511,12 +511,6 @@ body:hover .cursor-dot { opacity: 1; }
 }
 
 /* From Uiverse.io by karthik092726122003 */
-.styled-wrapper {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-}
-
 .styled-wrapper .button {
   display: block;
   position: relative;
@@ -528,8 +522,6 @@ body:hover .cursor-dot { opacity: 1; }
   background-color: transparent;
   cursor: pointer;
   border: 0;
-  border-radius: 50%;
-  flex-shrink: 0;
 }
 
 .styled-wrapper .button:before {
@@ -537,7 +529,7 @@ body:hover .cursor-dot { opacity: 1; }
   position: absolute;
   border-radius: 50%;
   inset: 7px;
-  border: 3px solid rgba(255, 255, 255, 0.25); /* Updated dynamically for dark mode */
+  border: 3px solid #f0eeef; /* Update dynamically for light/dark mode */
   transition:
     opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
     transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
@@ -557,8 +549,7 @@ body:hover .cursor-dot { opacity: 1; }
 }
 
 .styled-wrapper .button:hover:before,
-.styled-wrapper .button:focus:before,
-.styled-wrapper:hover .button:before {
+.styled-wrapper .button:focus:before {
   opacity: 0;
   transform: scale(0.7);
   transition:
@@ -567,8 +558,7 @@ body:hover .cursor-dot { opacity: 1; }
 }
 
 .styled-wrapper .button:hover:after,
-.styled-wrapper .button:focus:after,
-.styled-wrapper:hover .button:after {
+.styled-wrapper .button:focus:after {
   opacity: 1;
   transform: scale(1);
   transition:
@@ -590,27 +580,13 @@ body:hover .cursor-dot { opacity: 1; }
   margin: 24px 18px 0 22px;
   transform: rotate(360deg);
   fill: #f0eeef;
+  flex-shrink: 0;
 }
 
 .styled-wrapper .button:hover .button-box,
-.styled-wrapper .button:focus .button-box,
-.styled-wrapper:hover .button-box {
+.styled-wrapper .button:focus .button-box {
   transition: 0.4s;
   transform: translateX(-69px);
-}
-
-.styled-button-label {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-2);
-  letter-spacing: 0.02em;
-  transition: color 0.25s ease, transform 0.25s ease;
-  white-space: nowrap;
-}
-
-.styled-wrapper:hover .styled-button-label {
-  color: var(--text-1);
-  transform: translateX(2px);
 }
 
 /* ============================================
