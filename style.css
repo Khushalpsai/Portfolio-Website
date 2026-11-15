@@ -172,6 +172,19 @@ body:hover .cursor-dot { opacity: 1; }
   color: var(--text-1);
   margin-bottom: 14px;
   line-height: 1.15;
+  position: relative;
+}
+
+/* Sophisticated thin accent line above section titles */
+.section-header .section-title::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--accent);
+  margin: 0 auto 18px;
+  border-radius: 2px;
+  opacity: 0.5;
 }
 
 .section-subtitle {
@@ -420,31 +433,18 @@ body:hover .cursor-dot { opacity: 1; }
   opacity: 0;
   animation: fadeUp 0.6s var(--ease-out-expo) 0.9s both;
 }
-.scroll-indicator span {
+.scroll-hint {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   color: var(--text-4);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-transform: lowercase;
+  opacity: 0.5;
+  animation: gentlePulse 3s ease-in-out infinite;
 }
-.scroll-mouse {
-  width: 22px; height: 36px;
-  border: 1.5px solid var(--text-4);
-  border-radius: 11px;
-  display: flex;
-  justify-content: center;
-  padding-top: 7px;
-}
-.scroll-wheel {
-  width: 2px; height: 6px;
-  background: var(--accent);
-  border-radius: 2px;
-  animation: scrollWheel 2.2s var(--ease-in-out) infinite;
-}
-@keyframes scrollWheel {
-  0%   { transform: translateY(0); opacity: 1; }
-  80%  { transform: translateY(9px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 0; }
+@keyframes gentlePulse {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 0.6; transform: translateY(3px); }
 }
 
 /* ============================================
@@ -568,9 +568,40 @@ body:hover .cursor-dot { opacity: 1; }
   font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin-bottom: 18px;
+  margin-bottom: 6px;
   color: var(--text-1);
   line-height: 1.4;
+}
+
+.about-edu-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.about-edu-uni {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--accent);
+  font-family: var(--font-mono);
+}
+.about-edu-year {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+.section-subtitle--caps {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
 }
 
 .about-text {
@@ -582,9 +613,10 @@ body:hover .cursor-dot { opacity: 1; }
 
 .about-info-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 12px;
   margin: 28px 0;
+  max-width: 360px;
 }
 
 .about-info-item {
