@@ -844,146 +844,473 @@ body:hover .cursor-dot { opacity: 1; }
   font-weight: 700;
 }
 
+/* ============================================
+   3D ROTATING BOOKS (Projects Shelf)
+   ============================================ */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 48px 32px;
+  padding: 24px 20px 56px;
+  perspective: 1200px;
 }
 
-.project-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  overflow: hidden;
+.book-container {
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 440px;
+  padding: 12px;
   position: relative;
-  transform-style: preserve-3d;
-  transition: border-color 0.25s, transform 0.12s ease-out, box-shadow 0.25s;
+  outline: none;
+  transition: opacity 0.35s ease, transform 0.35s ease, z-index 0.3s;
 }
 
-/* Radial spotlight on hover */
-.project-card::before {
+.book-container:hover,
+.book-container:focus-within,
+.book-container.is-active {
+  z-index: 50;
+}
+
+/* 3D Book Assembly */
+.book {
+  position: relative;
+  width: 290px;
+  height: 410px;
+  transform-style: preserve-3d;
+  transform: rotateY(-12deg) rotateX(2.5deg);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.65s ease;
+  filter: drop-shadow(-10px 16px 24px rgba(0, 0, 0, 0.65));
+  border-radius: 4px 14px 14px 4px;
+}
+
+/* Resting spine thickness simulation on left */
+.book::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(255,255,255,0.045),
-    transparent 40%
-  );
-  opacity: 0;
-  transition: opacity 0.3s;
+  left: -5px;
+  top: 2px;
+  bottom: 2px;
+  width: 10px;
+  background: linear-gradient(to right, #090a0d, #1c1e24 45%, #0e1014);
+  border-radius: 6px 0 0 6px;
+  transform: rotateY(-90deg) translateZ(4px);
+  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.7);
   pointer-events: none;
-  z-index: 1;
-  border-radius: inherit;
-}
-.project-card:hover::before { opacity: 1; }
-.project-card:hover {
-  border-color: var(--border-accent);
-  box-shadow: var(--shadow-hover);
 }
 
-.project-image {
-  position: relative;
-  aspect-ratio: 16/10;
+/* Hover & Active Open State: level out resting tilt */
+.book-container:hover .book,
+.book-container:focus-within .book,
+.book.is-open {
+  transform: rotateY(0deg) rotateX(0deg) translateY(-8px) scale(1.02);
+  filter: drop-shadow(-4px 22px 32px rgba(0, 0, 0, 0.85));
+  z-index: 40;
+}
+
+/* Realistic Layered Paper Stack Thickness (Right and Bottom Edges) */
+.book-pages-stack {
+  position: absolute;
+  inset: 4px 0 4px 4px;
+  border-radius: 2px 10px 10px 2px;
+  background: #17181f;
+  box-shadow:
+    1px 1px 0 #2b2d38,
+    3px 2px 0 #1b1c24,
+    5px 2px 0 #3a3c48,
+    7px 3px 0 #21232c,
+    9px 3px 0 #3a3c48,
+    11px 4px 0 #1e2028,
+    13px 4px 0 #2f323e,
+    15px 5px 0 #191a21,
+    17px 6px 14px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+/* Inside Page (Revealed when front cover swings open) */
+.book-inside {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px 12px 12px 2px;
+  background: linear-gradient(145deg, #15161c 0%, #0f1015 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 20px 0 26px -10px rgba(0, 0, 0, 0.85);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 22px 20px 32px;
   overflow: hidden;
 }
 
-.project-image-placeholder {
-  --ph: 250;
-  width: 100%; height: 100%;
+.book-inside-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: linear-gradient(145deg,
-    hsl(var(--ph),22%,11%),
-    hsl(var(--ph),28%,17%)
-  );
-  color: var(--text-3);
-  transition: transform 0.5s var(--ease-out-expo);
+  height: 100%;
 }
-.project-card:hover .project-image-placeholder { transform: scale(1.04); }
-.project-image-placeholder span {
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+
+.book-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.book-page-vol {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--book-accent, var(--accent));
   text-transform: uppercase;
 }
 
-.project-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(9,9,11,0.82);
+.book-page-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--r-full);
+  background: rgba(125, 147, 168, 0.15);
+  color: var(--book-accent, var(--accent));
+  border: 1px solid rgba(125, 147, 168, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.book-inside-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-1);
+  line-height: 1.3;
+  margin-bottom: 8px;
+  letter-spacing: -0.015em;
+}
+
+.book-inside-desc {
+  font-size: 0.82rem;
+  color: var(--text-2);
+  line-height: 1.6;
+  margin-bottom: 14px;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.book-inside-stack {
+  margin-bottom: 16px;
+}
+
+.book-section-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+
+.book-tags {
   display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.book-tag {
+  padding: 3px 9px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-1);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--r-sm);
+  letter-spacing: 0.02em;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+.book-tag:hover {
+  border-color: var(--book-accent, var(--accent));
+  background: rgba(125, 147, 168, 0.18);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.book-inside-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.book-action-btn {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  opacity: 0;
-  transition: opacity 0.25s;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-}
-.project-card:hover .project-overlay { opacity: 1; }
-
-.project-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  gap: 7px;
+  padding: 8px 14px;
   border-radius: var(--r-sm);
-  color: var(--text-1);
-  font-size: 0.83rem;
-  font-weight: 500;
-  transition: background 0.2s, border-color 0.2s, transform 0.25s var(--ease-out-expo);
-  transform: translateY(12px);
-}
-.project-card:hover .project-link { transform: translateY(0); }
-.project-link:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #09090b;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.22s var(--ease-out-expo);
+  flex: 1;
+  white-space: nowrap;
+  text-align: center;
+  position: relative;
+  z-index: 10;
 }
 
-.project-info {
-  padding: 24px 24px 26px;
-  position: relative;
+.book-btn-primary {
+  background: var(--book-accent, var(--accent));
+  color: #09090b;
+  border: 1px solid var(--book-accent, var(--accent));
+}
+.book-btn-primary:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(125, 147, 168, 0.35);
+}
+
+.book-btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-1);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+.book-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+/* Front Cover (3D Swing Mechanism) */
+.book-cover {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.25, 1, 0.3, 1), box-shadow 0.75s ease;
+  z-index: 10;
+  border-radius: 4px 14px 14px 4px;
+  cursor: pointer;
+}
+
+/* Swing open to -135deg on desktop hover or tap */
+.book-container:hover .book-cover,
+.book-container:focus-within .book-cover,
+.book.is-open .book-cover {
+  transform: rotateY(-135deg);
+  box-shadow: 16px 14px 34px rgba(0, 0, 0, 0.6);
+}
+
+.book-cover-front,
+.book-cover-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+/* Front Cover Face */
+.book-cover-front {
+  border-radius: 4px 14px 14px 4px;
+  background: linear-gradient(135deg, #1b1c24 0%, #121318 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 4px 0 10px rgba(0, 0, 0, 0.7),
+    inset -1px 0 0 rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Spine crease and joint indentation line */
+.book-spine-crease {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 22px;
+  width: 3px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.5));
+  box-shadow: -1px 0 2px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
   z-index: 2;
 }
 
-.project-tags {
+.book-cover-content {
+  position: relative;
+  z-index: 1;
   display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-bottom: 14px;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px 20px 20px 36px;
 }
 
-.project-tag {
-  padding: 3px 11px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--accent);
-  background: var(--accent-dim);
-  border: 1px solid rgba(125,147,168,0.2);
+.book-cover-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.book-category-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--book-accent, var(--accent));
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 4px 10px;
   border-radius: var(--r-full);
+}
+
+.book-corner-decor {
+  color: var(--book-accent, var(--accent));
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.book-cover-emblem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 70%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  color: var(--book-accent, var(--accent));
+  margin-bottom: 20px;
+  transition: transform 0.4s var(--ease-out-expo), border-color 0.4s;
+}
+.book-container:hover .book-cover-emblem {
+  transform: scale(1.06);
+  border-color: var(--book-accent, var(--accent));
+}
+
+.book-cover-meta {
+  flex-grow: 1;
+}
+
+.book-cover-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #f8fafc;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.book-cover-tagline {
+  font-size: 0.8rem;
+  color: var(--text-2);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.book-cover-footer {
+  padding-top: 14px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.book-open-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--book-accent, var(--accent));
+  letter-spacing: 0.04em;
+  transition: transform 0.3s;
+}
+.book-container:hover .book-open-hint {
+  transform: translateX(4px);
+}
+
+.book-open-icon {
+  font-size: 0.85rem;
+}
+
+/* Inner Cover Lining / Endpaper (Revealed when opened to -135deg) */
+.book-cover-back {
+  transform: rotateY(180deg);
+  border-radius: 14px 4px 4px 14px;
+  background: #14151a;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(225deg, #171821 0%, #0e0f14 100%);
+  background-size: 16px 16px, 100% 100%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset -16px 0 24px -8px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px 20px 22px;
+}
+
+.book-lining-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.book-ex-libris {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.ex-libris-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--text-3);
+  text-transform: uppercase;
+}
+
+.ex-libris-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-2);
   letter-spacing: 0.02em;
 }
 
-.project-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text-1);
-  margin-bottom: 10px;
-  letter-spacing: -0.01em;
-  line-height: 1.35;
+.ex-libris-sub {
+  font-size: 0.7rem;
+  color: var(--text-3);
 }
 
-.project-description {
-  font-size: 0.875rem;
-  color: var(--text-2);
-  line-height: 1.75;
+.book-ribbon-marker {
+  width: 14px;
+  height: 48px;
+  background: var(--book-accent, var(--accent));
+  margin: 0 auto;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 80%, 0% 100%);
+  opacity: 0.75;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* ============================================
@@ -1300,7 +1627,11 @@ body:hover .cursor-dot { opacity: 1; }
   .nav-links.active { right: 0; }
   .nav-toggle { display: flex; }
 
-  .projects-grid { grid-template-columns: 1fr; }
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px 16px;
+    padding: 16px 8px 40px;
+  }
   .about-info-grid { grid-template-columns: 1fr; }
 
   .cursor-glow, .cursor-dot { display: none; }
@@ -1326,6 +1657,25 @@ body:hover .cursor-dot { opacity: 1; }
   .hero-photo-img { max-height: 320px; }
 
   .contact-form { padding: 24px; }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 12px 0 40px;
+  }
+  .book-container {
+    min-height: 410px;
+    padding: 8px 0;
+  }
+  .book {
+    width: 270px;
+    height: 395px;
+  }
+  .book-container:hover .book-cover,
+  .book-container:focus-within .book-cover,
+  .book.is-open .book-cover {
+    transform: rotateY(-125deg);
+  }
 
   .skill-pill { padding: 8px 15px; }
   .skill-pill span { font-size: 0.8rem; }
