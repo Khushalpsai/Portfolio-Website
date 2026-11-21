@@ -1,4 +1,4 @@
-/**
+ /**
  * React Bits — Antigravity Background (Vanilla JS / WebGL2 Port)
  * Component: @react-bits/Antigravity-JS-CSS
  * Source: https://reactbits.dev/animations/antigravity
