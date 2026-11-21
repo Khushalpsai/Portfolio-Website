@@ -745,10 +745,13 @@ body:hover .cursor-dot { opacity: 1; }
   gap: 18px;
   overflow: hidden;
   padding: 8px 0;
+  width: 100%;
 }
 
 .skills-marquee-row {
   overflow: hidden;
+  width: 100%;
+  display: flex;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
 }
@@ -762,15 +765,23 @@ body:hover .cursor-dot { opacity: 1; }
   width: max-content;
   will-change: transform;
 }
-.skills-marquee-track.marquee-right { animation: marqRight 32s linear infinite; }
-.skills-marquee-track.marquee-left  { animation: marqLeft  32s linear infinite; }
 
-@keyframes marqRight {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
 }
-@keyframes marqLeft {
-  0%   { transform: translateX(-50%); }
+
+.skills-marquee-track.marquee-right { animation: marqScrollRight 45s linear infinite; }
+.skills-marquee-track.marquee-left  { animation: marqScrollLeft  45s linear infinite; }
+
+@keyframes marqScrollRight {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 6px)); }
+}
+@keyframes marqScrollLeft {
+  0%   { transform: translateX(calc(-50% - 6px)); }
   100% { transform: translateX(0); }
 }
 
